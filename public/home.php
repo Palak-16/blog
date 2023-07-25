@@ -42,10 +42,9 @@
                     </a>
 
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                        <li><a href="#" class="nav-link px-2 link-secondary">Overview</a></li>
-                        <li><a href="#" class="nav-link px-2 link-body-emphasis">Inventory</a></li>
-                        <li><a href="#" class="nav-link px-2 link-body-emphasis">Customers</a></li>
-                        <li><a href="#" class="nav-link px-2 link-body-emphasis">Products</a></li>
+                        <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
+                        <li><a href="#" class="nav-link px-2 link-body-emphasis">Blog</a></li>
+                        <li><a href="#" class="nav-link px-2 link-body-emphasis">Contact Us</a></li>
                     </ul>
 
                     <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
@@ -57,9 +56,9 @@
                             <img src="assets/images/logo.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
                         </a>
                         <ul class="dropdown-menu text-small">
-                            <li><a class="dropdown-item" href="#">New project...</a></li>
-                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><a class="dropdown-item" href="#">Admin</a></li>
                             <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -96,6 +95,8 @@
             </ol>
         </div>
         <!--end slider-->
+
+
         <main class="p-2">
             <h3>Featured</h3>
 
@@ -112,8 +113,8 @@
                         <svg class="bi"><use xlink:href="#chevron-right"/></svg>
                     </a>
                     </div>
-                    <div class="col-lg-auto col-12 d-lg-block">
-                    <svg class="bd-placeholder-img w-100 w-l-50" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                    <div class="col-lg-5 col-12 d-lg-block">
+                    <img class="bd-placeholder-img w-100" width="200" height="250" style="object-fit:cover;" src="assets\images\logo.jpg">
                   </div>
                 </div>
               </div>
@@ -129,8 +130,8 @@
                         <svg class="bi"><use xlink:href="#chevron-right"/></svg>
                     </a>
                     </div>
-                    <div class="col-lg-auto col-12 d-lg-block">
-                    <svg class="bd-placeholder-img w-100 w-l-50" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                    <div class="col-lg-5 col-12 d-lg-block">
+                    <img class="bd-placeholder-img w-100" width="200" height="250" style="object-fit:cover;" src="assets\images\logo.jpg">
                     </div>
                 </div>
               </div>
