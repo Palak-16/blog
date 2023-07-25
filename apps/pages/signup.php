@@ -119,19 +119,11 @@
 
     <div class="form-floating">
       <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">Email</label>
-    </div>
-    <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
       <label for="floatingInput">Email address</label>
     </div>
     <div class="form-floating">
       <input name="username" type="text" class="form-control mb-2" id="floatingInput" placeholder="username">
       <label for="floatingInput">Username</label>
-    </div>
-    <div class="form-floating">
-      <input name="email" type="email" class="form-control mb-2" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">Email address</label>
     </div>
     <div class="form-floating">
       <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
