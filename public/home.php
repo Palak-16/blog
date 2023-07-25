@@ -111,12 +111,9 @@
                             <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
                             <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
                                 Continue reading
-                                <svg class="bi">
-                                    <use xlink:href="#chevron-right" />
-                                </svg>
                             </a>
                         </div>
-                        <div class="col-lg-5 col-12 d-lg-block">
+                        <div class="col-lg-5 col-12 d-none d-lg-block">
                             <img class="bd-placeholder-img w-100" width="200" height="250" style="object-fit:cover;" src="assets\images\logo.jpg">
                         </div>
                     </div>
@@ -130,12 +127,9 @@
                             <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
                             <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
                                 Continue reading
-                                <svg class="bi">
-                                    <use xlink:href="#chevron-right" />
-                                </svg>
                             </a>
                         </div>
-                        <div class="col-lg-5 col-12 d-lg-block">
+                        <div class="col-lg-5 col-12 d-none d-lg-block">
                             <img class="bd-placeholder-img w-100" width="200" height="250" style="object-fit:cover;" src="assets\images\logo.jpg">
                         </div>
                     </div>
