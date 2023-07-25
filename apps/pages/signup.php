@@ -115,8 +115,16 @@
 <main class="form-signin w-100 m-auto">
   <form>
     <img class="mb-4" src="../../public/assets/images/logo.jpg" alt="" width="72" height="57">
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+    <h1 class="h3 mb-3 fw-normal">Please Sign Up</h1>
 
+    <div class="form-floating">
+      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <label for="floatingInput">Email</label>
+    </div>
+    <div class="form-floating">
+      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <label for="floatingInput">Email address</label>
+    </div>
     <div class="form-floating">
       <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
       <label for="floatingInput">Email address</label>
@@ -135,7 +143,7 @@
     <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
   </form>
 </main>
-<script src="/assets/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../public/assets/dist/js/bootstrap.bundle.min.js"></script>
 
     </body>
 </html>
