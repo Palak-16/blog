@@ -1,8 +1,32 @@
 <?php
+  $DBUSER = "root";
+  $DBPASS = "";
+  $DBNAME = "myblog_db";
+  $DBHOST = "localhost"; 
+  $conn = new mysqli($DBHOST,$DBUSER,$DBPASS,$DBNAME,);
 
-  if(!empty($_POST))
+  if($_SERVER['REQUEST_METHOD'] == 'POST')
   {
+      $email = $_POST['email'];
+      $pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
+    $sql="SELECT * FROM `users` WHERE (email='$email' AND password='$pass')";
+    $res= mysqli_query($conn,$sql);
+  
+     
+    if(mysqli_num_rows($res) > 0){  
+      echo "row found";
+      $row=mysqli_fetch_assoc($res);
+      if($row["role"]=='admin')
+       {
+         header("location: ../../public/admin.php");
+       }
+      if($row["role"]=='user')
+         header("location: ../../public/home.php");
+    }
+    else{
+      echo "wrong email or password";
+    }
   }
 ?>
 
