@@ -57,7 +57,7 @@
       $email = $_POST['email'];
       $pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-      $sql="insert into users(username,email,password,role) values ('$username','$email','$pass')";
+      $sql="insert into users(username,email,password) values ('$username','$email','$pass')";
       $result=mysqli_query($conn,$sql);
 
       if($result)
