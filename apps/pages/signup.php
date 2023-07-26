@@ -1,11 +1,22 @@
 <?php
+  $DBUSER = "root";
+  $DBPASS = "";
+  $DBNAME = "myblog_db";
+  $DBHOST = "localhost"; 
+  $conn = new mysqli($DBHOST,$DBUSER,$DBPASS,$DBNAME,);
 
-  if(!empty($_POST))
+  if($_SERVER['REQUEST_METHOD'] == 'POST')
   {
     $errors=[];
+    $email = $_POST['email'];
 
-    $query = "select id from users where email = :email limit 1";
-    $email = query($query,['email'=>$_POST['email']]);
+    $sql="SELECT email FROM `users` WHERE email='$email'";
+    $res= mysqli_query($conn,$sql);
+
+    if (mysqli_num_rows($res) > 0){
+      $errors['email']= "Email is already in use";
+    }
+      
 
     if(empty($_POST['email']))
     {
@@ -15,9 +26,9 @@
     {
       $errors['email'] = "Email not valid";
     }
-    else if($email){
-      $errors['email']= "Email is already in use";
-    }
+    // else if($email){
+    //   $errors['email']= "Email is already in use";
+    // }
 
     if(empty($_POST['username']))
     {
@@ -38,21 +49,19 @@
       $errors['password']= "Password do not match";
     }
 
-    
-
     if(empty($errors))
     {
       //if no errors save to database
       $data=[];
-      $data['username'] = $_POST['username'];
-      $data['email']    = $_POST['email'];
-      $data['role']     = "user";
-      $data['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+      $username = $_POST['username'];
+      $email = $_POST['email'];
+      $pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-      $query="insert into users(username,email,password,role) values (:username,:email,:password,:role)";
-      query($query,$data);
+      $sql="insert into users(username,email,password,role) values ('$username','$email','$pass')";
+      $result=mysqli_query($conn,$sql);
 
-      redirect('login');
+      if($result)
+         header("location: ../../public/login.php");
     }
   }
 ?>
@@ -69,10 +78,6 @@
     <title>Signup</title>
 
     <link rel="canonical" href="/public/assets/css/signin.css">
-
-    
-
-    
 
     <link href="../../public/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -176,12 +181,26 @@
     <img class="mb-4" src="../../public/assets/images/logo.jpg" alt="" width="72" height="57">
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
     
-    <?php if (!empty($errors)):?>
+    <!-- <?php if (!empty($errors)): ?>
       <div class="alert alert-danger">Please fix the error below</div>
-    <?php endif;?>
+    <?php endif;?> -->
+<?php
+function old_value($key)
+{
+    if(!empty($_POST[$key]))
+        return $_POST[$key];
+    return "";
+}
 
+function old_checked($key)
+{
+    if(!empty($_POST[$key]))
+        return " checked ";
+    return "";
+}
+?>
     <div class="form-floating">
-      <input value="<?=old_value('email')?>" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <input value="<?=old_value('email')?>" name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
       <label for="floatingInput">Email address</label>
     </div>
     <?php if(!empty($errors['email'])):?>
@@ -223,7 +242,7 @@
       <div class="text-danger"><?=$errors['terms']?></div>
     <?php endif;?>
 
-    <button class="btn btn-primary w-100 py-2" type="submit">Create </button>
+    <button class="btn btn-primary w-100 py-2" type="submit" name='submit'>Create </button>
   </form>
 </main>
 <script src="../../public/assets/dist/js/bootstrap.bundle.min.js"></script>
