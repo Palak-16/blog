@@ -3,14 +3,16 @@
   $DBPASS = "";
   $DBNAME = "myblog_db";
   $DBHOST = "localhost"; 
-  $conn = new mysqli($DBHOST,$DBUSER,$DBPASS,$DBNAME,);
+  $conn = new mysqli($DBHOST,$DBUSER,$DBPASS,$DBNAME);
 
   if($_SERVER['REQUEST_METHOD'] == 'POST')
   {
       $email = $_POST['email'];
-      $pass = password_hash($_POST['password'], PASSWORD_DEFAULT);
+      $pass = $_POST['password'];
+      $pass = md5($pass);
 
     $sql="SELECT * FROM `users` WHERE (email='$email' AND password='$pass')";
+    var_dump($sql);
     $res= mysqli_query($conn,$sql);
   
      
@@ -19,10 +21,10 @@
       $row=mysqli_fetch_assoc($res);
       if($row["role"]=='admin')
        {
-         header("location: ../../public/admin.php");
+         header("location: admin.php");
        }
       if($row["role"]=='user')
-         header("location: ../../public/home.php");
+         header("location: home.php");
     }
     else{
       echo "wrong email or password";
