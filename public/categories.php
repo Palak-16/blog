@@ -143,7 +143,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2 " aria-current="page" href="./categories.php">
+                                <a class="nav-link d-flex align-items-center gap-2 " aria-current="page" href="#">
                                     <i class="bi bi-bookmarks-fill"></i>
                                     Category
                                 </a>
@@ -211,15 +211,14 @@
                     
                 </div>
                 <div class="container-fluid" id="user">
-                    <h3 class="mx-3">Users : </h3>
+                    <h3 class="mx-3">Categories : </h3>
                     <table class="table table-bordered table-hover" >
                        <thead>
                          <tr>
-                            <th>EMAIL</th>
-                            <th>USERNAME</th>
-                            <th>ROLE</th>
-                            <th>DATE</th>
-                            <th>ACTION</th>
+                            <th>Category</th>
+                            <th>slug</th>
+                            <th>Disabled</th>
+                            <th>Action</th>
                          </tr>
                        </thead>
                         <?php
@@ -233,7 +232,7 @@
                             if (!$conn) //to chk connection 
                                 die("connection error");
                             else {
-                                $sql = "SELECT * FROM `users` WHERE 1";
+                                $sql = "SELECT * FROM `categories` WHERE 1";
                                 $result = mysqli_query($conn, $sql);
                                 $total_row = mysqli_num_rows($result);
 
@@ -241,10 +240,9 @@
                                     while ($single_row = mysqli_fetch_assoc($result)) {
                                         echo "
                                            <tr>
-                                              <td>" . $single_row['username'] . "</td>
-                                              <td>" . $single_row['email'] . "</td>
-                                              <td>" . $single_row['role'] . "</td>
-                                              <td>" . $single_row['date'] . "</td>
+                                              <td>" . $single_row['category'] . "</td>
+                                              <td>" . $single_row['slug'] . "</td>
+                                              <td>" . $single_row['disabled'] . "</td>                                              
                                               <td>
                                                  <button class='btn btn-warning text-white btn-sm'><a href='edit.php?id=" . $single_row['id'] . "'><i class='bi bi-pencil-square'></i></a></button>
                                                  <button class='btn btn-danger text-white btn-sm'><a href='delete.php?id=" . $single_row['id'] . "'><i class='bi bi-trash-fill'></i></button>
