@@ -85,6 +85,23 @@
         .bd-mode-toggle {
             z-index: 1500;
         }
+        .pagination {   
+        display: inline-block;   
+    }   
+    .pagination a {   
+        font-weight:bold;   
+        font-size:15px;   
+        color: black;  
+        padding: 7px 10px;   
+        text-decoration: none;   
+        border:1px solid black;   
+    }   
+    .pagination a.active {   
+            background-color: greenyellow;   
+    }   
+    .pagination a:hover:not(.active) {   
+        background-color: skyblue;   
+    }   
     </style>
     <!-- Bootstrap Font Icon CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
@@ -210,6 +227,29 @@
                 <div>
                     
                 </div>
+                <?php
+
+                $server_name = "localhost";
+                $username = "root";
+                $password = "";
+                $database = "myblog_db";
+
+                //connection to data base
+                $conn = new mysqli($server_name, $username, $password, $database);
+
+                $per_page_record = 2; // Number of entries to show in a page.   
+                // Look for a GET variable page if not found default is 1.        
+                if (isset($_GET["page"])) {
+                    $page = $_GET["page"];
+                } else {
+                    $page = 1;
+                }
+
+                $start_from =( ($page - 1) * $per_page_record);
+
+                $query = "SELECT * FROM users LIMIT $start_from, $per_page_record";
+                $result = mysqli_query($conn, $query);
+                ?>  
                 <div class="container-fluid" id="user">
                     <h3 class="mx-3">Users : </h3>
                     <table class="table table-bordered table-hover" >
@@ -223,23 +263,15 @@
                          </tr>
                        </thead>
                         <?php
-                            $server_name = "localhost";
-                            $username = "root";
-                            $password = "";
-                            $database = "myblog_db";
-        
-                            //connection to data base
-                            $conn = new mysqli($server_name, $username, $password, $database);
-                            if (!$conn) //to chk connection 
-                                die("connection error");
-                            else {
-                                $sql = "SELECT * FROM `users` WHERE 1";
-                                $result = mysqli_query($conn, $sql);
-                                $total_row = mysqli_num_rows($result);
 
-                                if ($total_row > 0) {
-                                    while ($single_row = mysqli_fetch_assoc($result)) {
-                                        echo "
+                        if (!$conn) //to chk connection 
+                            die("connection error");
+                        else {
+                            $total_row = mysqli_num_rows($result);
+
+                            if ($total_row > 0) {
+                                while ($single_row = mysqli_fetch_assoc($result)) {
+                                    echo "
                                            <tr>
                                               <td>" . $single_row['username'] . "</td>
                                               <td>" . $single_row['email'] . "</td>
@@ -251,18 +283,62 @@
                                               </td>
                                            </tr>
                                            ";
-                                    }
                                 }
                             }
+                        }
                         ?>
                     </table>
-                </div>
-            </main>
-        </div>
+                    <div class="pagination mx-20" >    
+                        <?php
+                            $query = "SELECT COUNT(*) FROM users";
+                            $rs_result = mysqli_query($conn, $query);
+                            $row = mysqli_fetch_row($rs_result);
+                            $total_records = $row[0];
+                    
+                            echo "</br>";
+                            $total_pages = ceil($total_records / $per_page_record);
+                            $pagLink = "";
+                    
+                            if ($page >= 2) {
+                                echo "<a href='./admin.php?page=" . ($page - 1) . "'>  Prev </a>";
+                            }
+                    
+                            for ($i = 1; $i <= $total_pages; $i++) {
+                                if ($i == $page) {
+                                    $pagLink .= "<a class = 'active' href='./admin.php?page="
+                                        . $i . "'>" . $i . " </a>";
+                                } else {
+                                    $pagLink .= "<a href='./admin.php?page=" . $i . "'>   
+                                                                      " . $i . " </a>";
+                                }
+                            }
+                            ;
+                            echo $pagLink;
+                    
+                            if ($page < $total_pages) {
+                                echo "<a href='./admin.php?page=" . ($page + 1) . "'>  Next </a>";
+                            }
+                        ?>    
+                    </div> 
+                    <div class="inline my-3 mx-auto" >   
+                        <input id="page" type="number" min="1" max="<?php echo $total_pages?>"   
+                        placeholder="<?php echo $page."/".$total_pages; ?>" required>   
+                        <button onClick="go2Page();">Go</button>   
+                    </div>   
+            </div>
+       </main>
+   </div>
     </div>
     <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-
     <script src="asses/js/tdashboard.js"></script>
+    <script>   
+    function go2Page()   
+    {   
+        var page = document.getElementById("page").value;   
+        page = ((page><?php echo $total_pages; ?>)?<?php echo $total_pages; ?>:((page<1)?1:page));   
+        window.location.href = './admin.php?page='+page;   
+    }   
+  </script>  
 </body>
 
 </html>
