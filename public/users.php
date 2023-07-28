@@ -155,7 +155,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="./user.php">
+                                <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="./users.php">
                                     <i class="bi bi-people-fill "></i>
                                     User
                                 </a>

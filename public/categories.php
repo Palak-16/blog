@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <title>Dashboard Template · Bootstrap v5.3</title>
+    <title>Categories</title>
     
     <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/bootstap-icons.css" rel="stylesheet">
@@ -212,11 +212,11 @@
                 </div>
                 <div class="container-fluid" id="user">
                     <h3 class="mx-3">Categories : </h3>
+                    <button class="btn btn-sm btn-outline-secondary d-flex align-items-center gap-1" type="submit" name='submit'><a href="./create-category.php">Create new category</a> </button>
                     <table class="table table-bordered table-hover" >
                        <thead>
                          <tr>
                             <th>Category</th>
-                            <th>slug</th>
                             <th>Disabled</th>
                             <th>Action</th>
                          </tr>
@@ -241,11 +241,10 @@
                                         echo "
                                            <tr>
                                               <td>" . $single_row['category'] . "</td>
-                                              <td>" . $single_row['slug'] . "</td>
                                               <td>" . $single_row['disabled'] . "</td>                                              
                                               <td>
-                                                 <button class='btn btn-warning text-white btn-sm'><a href='edit.php?id=" . $single_row['id'] . "'><i class='bi bi-pencil-square'></i></a></button>
-                                                 <button class='btn btn-danger text-white btn-sm'><a href='delete.php?id=" . $single_row['id'] . "'><i class='bi bi-trash-fill'></i></button>
+                                                 <button class='btn btn-warning text-white btn-sm'><a href='edit_category.php?id=" . $single_row['id'] . "'><i class='bi bi-pencil-square'></i></a></button>
+                                                 <button class='btn btn-danger text-white btn-sm'><a href='delete_category.php?id=" . $single_row['id'] . "'><i class='bi bi-trash-fill'></i></button>
                                               </td>
                                            </tr>
                                            ";
