@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <title>Categories</title>
+    <title>Dashboard Template · Bootstrap v5.3</title>
     
     <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/bootstap-icons.css" rel="stylesheet">
@@ -85,6 +85,24 @@
         .bd-mode-toggle {
             z-index: 1500;
         }
+        
+        .pagination {   
+        display: inline-block;   
+    }   
+    .pagination a {   
+        font-weight:bold;   
+        font-size:15px;   
+        color: black;  
+        padding: 7px 10px;   
+        text-decoration: none;   
+        border:1px solid black;   
+    }   
+    .pagination a.active {   
+            background-color: greenyellow;   
+    }   
+    .pagination a:hover:not(.active) {   
+        background-color: skyblue;   
+    }   
     </style>
     <!-- Bootstrap Font Icon CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
@@ -137,19 +155,19 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2 " aria-current="page" href="./users.php">
+                                <a class="nav-link d-flex align-items-center gap-2" aria-current="page" href="./users.php">
                                     <i class="bi bi-people-fill "></i>
                                     User
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="./categories.php">
+                                <a class="nav-link d-flex align-items-center gap-2 " aria-current="page" href="./categories.php">
                                     <i class="bi bi-bookmarks-fill"></i>
                                     Category
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2 " aria-current="page" href="./posts.php">
+                                <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="./posts.php">
                                     <i class="bi bi-file-post-fill"></i>
                                     Posts
                                 </a>
@@ -207,59 +225,120 @@
                         </button>
                     </div>
                 </div>
-                <div>
-                    
-                </div>
-                <div class="container-fluid" id="user">
-                    <h3 class="mx-3">Categories : </h3>
-                    <button class="btn btn-sm btn-outline-secondary d-flex align-items-center gap-1" type="submit" name='submit'><a href="./create-category.php">Create new category</a> </button>
+                <?php
+
+                $server_name = "localhost";
+                $username = "root";
+                $password = "";
+                $database = "myblog_db";
+
+                //connection to data base
+                $conn = new mysqli($server_name, $username, $password, $database);
+
+                $per_page_record = 2; // Number of entries to show in a page.   
+                // Look for a GET variable page if not found default is 1.        
+                if (isset($_GET["page"])) {
+                    $page = $_GET["page"];
+                } else {
+                    $page = 1;
+                }
+
+                $start_from =( ($page - 1) * $per_page_record);
+
+                $query = "SELECT * FROM posts LIMIT $start_from, $per_page_record";
+                $result = mysqli_query($conn, $query);
+                ?> 
+        <!-- user section -->
+        <div class="container-fluid" id="user">
+                    <h3 class="mx-3">Posts : </h3>
+                    <button class="btn btn-sm btn-outline-secondary d-flex align-items-center gap-1" type="submit" name='submit'><a href="./create-post.php">Create new Post</a> </button>
                     <table class="table table-bordered table-hover" >
                        <thead>
                          <tr>
-                            <th>Category</th>
-                            <th>Disabled</th>
-                            <th>Action</th>
+                            <th>Title</th>
+                            <th>Content</th>
+                            <th>Image</th>
+                            <th>DATE</th>
+                            <th>ACTION</th>
                          </tr>
                        </thead>
                         <?php
-                            $server_name = "localhost";
-                            $username = "root";
-                            $password = "";
-                            $database = "myblog_db";
-        
-                            //connection to data base
-                            $conn = new mysqli($server_name, $username, $password, $database);
-                            if (!$conn) //to chk connection 
-                                die("connection error");
-                            else {
-                                $sql = "SELECT * FROM `categories` WHERE 1";
-                                $result = mysqli_query($conn, $sql);
-                                $total_row = mysqli_num_rows($result);
 
-                                if ($total_row > 0) {
-                                    while ($single_row = mysqli_fetch_assoc($result)) {
-                                        echo "
+                        if (!$conn) //to chk connection 
+                            die("connection error");
+                        else {
+                            $total_row = mysqli_num_rows($result);
+
+                            if ($total_row > 0) {
+                                while ($single_row = mysqli_fetch_assoc($result)) {
+                                    echo "
                                            <tr>
-                                              <td>" . $single_row['category'] . "</td>
-                                              <td>" . $single_row['disabled'] . "</td>                                              
+                                              <td>" . $single_row['title'] . "</td>
+                                              <td>" . $single_row['content'] . "</td>
+                                              <td>" . "<img class='myimg' src='./assets/images/'" . $single_row['image'] . "' >" . "</td>
+                                              <td>" . $single_row['date'] . "</td>
                                               <td>
-                                                 <button class='btn btn-warning text-white btn-sm'><a href='edit_category.php?id=" . $single_row['id'] . "'><i class='bi bi-pencil-square'></i></a></button>
-                                                 <button class='btn btn-danger text-white btn-sm'><a href='delete_category.php?id=" . $single_row['id'] . "'><i class='bi bi-trash-fill'></i></button>
+                                                 <button class='btn btn-warning text-white btn-sm'><a href='edit.php?id=" . $single_row['id'] . "'><i class='bi bi-pencil-square'></i></a></button>
+                                                 <button class='btn btn-danger text-white btn-sm'><a href='delete.php?id=" . $single_row['id'] . "'><i class='bi bi-trash-fill'></i></button>
                                               </td>
                                            </tr>
                                            ";
-                                    }
                                 }
                             }
+                        }
                         ?>
                     </table>
-                </div>
-            </main>
-        </div>
+                    <div class="pagination mx-20" >    
+                        <?php
+                            $query = "SELECT COUNT(*) FROM posts";
+                            $rs_result = mysqli_query($conn, $query);
+                            $row = mysqli_fetch_row($rs_result);
+                            $total_records = $row[0];
+                    
+                            echo "</br>";
+                            $total_pages = ceil($total_records / $per_page_record);
+                            $pagLink = "";
+                    
+                            if ($page >= 2) {
+                                echo "<a href='./admin.php?page=" . ($page - 1) . "'>  Prev </a>";
+                            }
+                    
+                            for ($i = 1; $i <= $total_pages; $i++) {
+                                if ($i == $page) {
+                                    $pagLink .= "<a class = 'active' href='./admin.php?page="
+                                        . $i . "'>" . $i . " </a>";
+                                } else {
+                                    $pagLink .= "<a href='./admin.php?page=" . $i . "'>   
+                                                                      " . $i . " </a>";
+                                }
+                            }
+                            ;
+                            echo $pagLink;
+                    
+                            if ($page < $total_pages) {
+                                echo "<a href='./admin.php?page=" . ($page + 1) . "'>  Next </a>";
+                            }
+                        ?>    
+                    </div> 
+                    <div class="inline my-3 mx-auto" >   
+                        <input id="page" type="number" min="1" max="<?php echo $total_pages?>"   
+                        placeholder="<?php echo $page."/".$total_pages; ?>" required>   
+                        <button onClick="go2Page();">Go</button>   
+                    </div>   
+            </div>
+
+       </main>
+   </div>
     </div>
     <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-
     <script src="asses/js/tdashboard.js"></script>
-</body>
+    <script>   
+    function go2Page()   
+    {   
+        var page = document.getElementById("page").value;   
+        page = ((page><?php echo $total_pages; ?>)?<?php echo $total_pages; ?>:((page<1)?1:page));   
+        window.location.href = './admin.php?page='+page;   
+    }   
+  </script>  
 
 </html>

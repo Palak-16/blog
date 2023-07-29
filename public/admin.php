@@ -150,7 +150,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2 " aria-current="page" href="#posts">
+                                <a class="nav-link d-flex align-items-center gap-2 " aria-current="page" href="./posts.php">
                                     <i class="bi bi-file-post-fill"></i>
                                     Posts
                                 </a>
