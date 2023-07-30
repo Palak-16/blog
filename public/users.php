@@ -299,15 +299,15 @@
                             $pagLink = "";
                     
                             if ($page >= 2) {
-                                echo "<a href='./admin.php?page=" . ($page - 1) . "'>  Prev </a>";
+                                echo "<a href='./users.php?page=" . ($page - 1) . "'>  Prev </a>";
                             }
                     
                             for ($i = 1; $i <= $total_pages; $i++) {
                                 if ($i == $page) {
-                                    $pagLink .= "<a class = 'active' href='./admin.php?page="
+                                    $pagLink .= "<a class = 'active' href='./users.php?page="
                                         . $i . "'>" . $i . " </a>";
                                 } else {
-                                    $pagLink .= "<a href='./admin.php?page=" . $i . "'>   
+                                    $pagLink .= "<a href='./users.php?page=" . $i . "'>   
                                                                       " . $i . " </a>";
                                 }
                             }
@@ -315,7 +315,7 @@
                             echo $pagLink;
                     
                             if ($page < $total_pages) {
-                                echo "<a href='./admin.php?page=" . ($page + 1) . "'>  Next </a>";
+                                echo "<a href='./users.php?page=" . ($page + 1) . "'>  Next </a>";
                             }
                         ?>    
                     </div> 

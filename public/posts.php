@@ -103,6 +103,9 @@
     .pagination a:hover:not(.active) {   
         background-color: skyblue;   
     }   
+    .myimg{
+        width: 100px;
+    }
     </style>
     <!-- Bootstrap Font Icon CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
@@ -149,7 +152,7 @@
                     <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2" aria-current="page" href="./admin.php">
+                                <a class="nav-link d-flex align-items-center gap-2" aria-current="page" href="./posts.php">
                                     <i class="bi bi-house-door-fill"></i>
                                     Dashboard
                                 </a>
@@ -275,7 +278,7 @@
                                            <tr>
                                               <td>" . $single_row['title'] . "</td>
                                               <td>" . $single_row['content'] . "</td>
-                                              <td>" . "<img class='myimg' src='./assets/images/'" . $single_row['image'] . "' >" . "</td>
+                                              <td>" . "<img class='myimg' src='./assets/images/".$single_row['image']."' >" . "</td>
                                               <td>" . $single_row['date'] . "</td>
                                               <td>
                                                  <button class='btn btn-warning text-white btn-sm'><a href='edit.php?id=" . $single_row['id'] . "'><i class='bi bi-pencil-square'></i></a></button>
@@ -300,15 +303,15 @@
                             $pagLink = "";
                     
                             if ($page >= 2) {
-                                echo "<a href='./admin.php?page=" . ($page - 1) . "'>  Prev </a>";
+                                echo "<a href='./posts.php?page=" . ($page - 1) . "'>  Prev </a>";
                             }
                     
                             for ($i = 1; $i <= $total_pages; $i++) {
                                 if ($i == $page) {
-                                    $pagLink .= "<a class = 'active' href='./admin.php?page="
+                                    $pagLink .= "<a class = 'active' href='./posts.php?page="
                                         . $i . "'>" . $i . " </a>";
                                 } else {
-                                    $pagLink .= "<a href='./admin.php?page=" . $i . "'>   
+                                    $pagLink .= "<a href='./posts.php?page=" . $i . "'>   
                                                                       " . $i . " </a>";
                                 }
                             }
@@ -316,7 +319,7 @@
                             echo $pagLink;
                     
                             if ($page < $total_pages) {
-                                echo "<a href='./admin.php?page=" . ($page + 1) . "'>  Next </a>";
+                                echo "<a href='./posts.php?page=" . ($page + 1) . "'>  Next </a>";
                             }
                         ?>    
                     </div> 
@@ -337,7 +340,7 @@
     {   
         var page = document.getElementById("page").value;   
         page = ((page><?php echo $total_pages; ?>)?<?php echo $total_pages; ?>:((page<1)?1:page));   
-        window.location.href = './admin.php?page='+page;   
+        window.location.href = './posts.php?page='+page;   
     }   
   </script>  
 
