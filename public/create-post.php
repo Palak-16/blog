@@ -110,7 +110,7 @@
     </svg>
     
 <main class="form-signin w-100 m-auto">
-  <form method="post" enctype="multipart/form-data" action="./posts.php">
+  <form method="post" enctype="multipart/form-data"action="./posts.php" >
     <img class="mb-4" src="./assets/images/logo.jpg" alt="" width="72" height="57">
     <h1 class="h3 mb-3 fw-normal">Create Post </h1>
     
@@ -183,8 +183,8 @@ function old_value($key)
           $sql = "INSERT INTO `posts` (`title`,`content`,`image`) VALUES ('$title','$content','$file_name')";
           $result = mysqli_query($conn, $sql);
           if ($result) {
-            var_dump("aaaaaas");
-            // header("location: ./users.php");
+            echo "";
+           
           } else {
             echo "error 1";
           }

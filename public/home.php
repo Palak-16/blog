@@ -77,20 +77,20 @@
         <div class="ism-slider" data-transition_type="fade" data-play_type="loop" id="my-slider">
             <ol>
                 <li>
-                    <img src="assets/slider/ism/image/slides/flower-729514_1280.jpg">
-                    <div class="ism-caption ism-caption-0">My slide caption text</div>
+                    <img src="./assets/images/zedi_banner.jpg" height="320px">
+                    <div class="ism-caption ism-caption-0">Gaming tournaments</div>
                 </li>
                 <li>
-                    <img src="assets/slider/ism/image/slides/beautiful-701678_1280.jpg">
-                    <div class="ism-caption ism-caption-0">My slide caption text</div>
+                    <img src="./assets/images/pubg_banner_1-1.jpg">
+                    <div class="ism-caption ism-caption-0">BGMI</div>
                 </li>
                 <li>
-                    <img src="assets/slider/ism/image/slides/summer-192179_1280.jpg">
-                    <div class="ism-caption ism-caption-0">My slide caption text</div>
+                    <img src="./assets/images/valorant_banner.jpg">
+                    <div class="ism-caption ism-caption-0">VALORANT</div>
                 </li>
                 <li>
-                    <img src="assets/slider/ism/image/slides/city-690332_1280.jpg">
-                    <div class="ism-caption ism-caption-0">My slide caption text</div>
+                    <img src="./assets/images/freefire.jpeg">
+                    <div class="ism-caption ism-caption-0">FREEFIRE</div>
                 </li>
             </ol>
         </div>
