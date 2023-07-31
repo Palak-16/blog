@@ -99,9 +99,50 @@
         <link href="assets/css/blog.rtl.css" rel="stylesheet">
 
         <main class="p-2">
-            <h3 class="mx-4">Featured</h3>
+            <h3 class="mx-4 my-4">Featured</h3>
+            <?php
+            $server_name="localhost";
+            $username="root";
+            $password="";
+            $database="myblog_db";
+           
+           //connection to data base
+            $conn=new mysqli($server_name, $username, $password, $database);
+            if(!$conn)//to chk connection 
+               die("connection error");
 
-            <div class="row mb-2">
+               $sql="SELECT * FROM `posts` WHERE 1";
+               $result = mysqli_query($conn,$sql);
+               $total_row = mysqli_num_rows($result);
+
+               if($total_row != 0)
+               {
+                echo "<div class='row mb-2'>";
+                while($single_row = mysqli_fetch_assoc($result))
+                {
+                    echo "
+                 <div class='col-md-6'>
+                    <div class='row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative'>
+                        <div class='col p-3 d-flex flex-column position-static'>
+                            <strong class='d-inline-block mb-2 text-primary-emphasis'>World</strong>
+                            <h3 class='mb-0'>".$single_row['title']."</h3>
+                            <div class='mb-1 text-body-secondary'>".date("jS M Y",strtotime($single_row['date']))."</div>
+                            <p class='card-text mb-auto'>".substr($single_row['content'],0,70).".....</p>
+                            <a href='#' class='icon-link gap-1 icon-link-hover stretched-link'>
+                                Continue reading
+                            </a>
+                        </div>
+                        <div class='col-lg-5 col-12 d-none d-lg-block'>
+                            <img class='bd-placeholder-img w-100' width='200' height='250' style='object-fit:cover ;' src='./assets/images/".$single_row['image']."'>
+                        </div>
+                    </div>
+                </div>
+                    ";
+                }
+               }
+
+        ?>
+            <!-- <div class="row mb-2">
                 <div class="col-md-6">
                     <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                         <div class="col p-4 d-flex flex-column position-static">
@@ -134,7 +175,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </main>
 
         <div class="container">
