@@ -86,7 +86,7 @@
             if(!$conn)//to chk connection 
                die("connection error");
 
-               $sql="SELECT * FROM `posts` WHERE 1";
+               $sql="SELECT * FROM `posts` LIMIT 4";
                $result = mysqli_query($conn,$sql);
                $total_row = mysqli_num_rows($result);
 
