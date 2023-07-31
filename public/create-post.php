@@ -110,7 +110,7 @@
     </svg>
     
 <main class="form-signin w-100 m-auto">
-  <form method="post" enctype="multipart/form-data"action="./posts.php" >
+  <form method="post" enctype="multipart/form-data" action="#" >
     <img class="mb-4" src="./assets/images/logo.jpg" alt="" width="72" height="57">
     <h1 class="h3 mb-3 fw-normal">Create Post </h1>
     
@@ -126,6 +126,7 @@ function old_value($key)
 }
 
 ?>
+<link href="./assets/summernote/summernote-lite.min.css" rel="stylesheet">
     <div class="form-floating">
       <input value="<?= old_value('title') ?>" name="title" type="textarea" class="form-control" id="floatingInput" >
       <label for="floatingInput">Title</label>
@@ -135,7 +136,7 @@ function old_value($key)
     <?php endif; ?>
 
     <div class="">
-      <textarea value="<?= old_value('content') ?>" name="content" class="form-control mb-2" id="floatingInput" placeholder="content"></textarea>
+      <textarea id="summernote" value="<?= old_value('content') ?>" name="content" class="form-control mb-2" id="floatingInput" placeholder="content"></textarea>
      
     </div>
     <?php if (!empty($errors['content'])): ?>
@@ -183,7 +184,7 @@ function old_value($key)
           $sql = "INSERT INTO `posts` (`title`,`content`,`image`) VALUES ('$title','$content','$file_name')";
           $result = mysqli_query($conn, $sql);
           if ($result) {
-            echo "";
+            echo "submitted";
            
           } else {
             echo "error 1";
@@ -199,7 +200,17 @@ function old_value($key)
   }
   ?>
 </main>
+<script src="./assets/js/jquery.js"></script>
 <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
+<script src="./assets/summernote/summernote-lite.min.js"></script>
+<script>
+  $('#summernote').summernote({
+    placeholder: 'Hello Bootstrap',
+    tabsize:2,
+    height: 200
+
+  });
+</script>
 
     </body>
 </html>
