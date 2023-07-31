@@ -99,13 +99,27 @@
 
         <div class="container"></div>
          <div class="row m-2 px-2 ">
-            <div class="main-content col-lg-9">
+            <div class="main-content col-lg-9 col-sm-12 col-md-12">
                <img class="mb-2" width="100%" height="20%" src="./assets/images/<?php echo $row["image"]?>">
                 <h1><?php echo $row["title"]?></h1>
                 <p><?php echo $row["content"]?></p>
             </div>
-            <div class="related-blogs col-lg-3">
-               
+            <?php
+              $sql = "SELECT * FROM posts";
+              $result = mysqli_query($conn,$sql);
+              $total_row = mysqli_num_rows($result);
+            ?>
+            <div class="related-blogs col-lg-3 col-sm-12 col-md-12">
+               <h3>Related blogs :</h3> 
+               <?php
+                if($total_row != 0)
+                 {
+                    while($row = mysqli_fetch_assoc($result))
+                    {
+                        echo "<a class='icon-link gap-1 icon-link-hover stretched-link' href='blogpage.php?id=".$row['id']."'>" .$row['title']. "</a><br><br>";
+                    }
+                 } 
+               ?>
             </div>
          </div>
         </main>
