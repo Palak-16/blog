@@ -32,75 +32,92 @@
 </head>
 
 <body>
-    <header class="p-3 border-bottom">
-        <div class="container">
-            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a href="../public/home.php" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
-                    <img src="assets/images/logo.jpg" class="bi me-2" width="40" height="32" style="object-fit:cover">
-                </a>
-                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                    <li><a href="./home.php" class="nav-link px-2 link-secondary">Home</a></li>
-                    <li><a href="./blogs.php" class="nav-link px-2 link-body-emphasis">Blog</a></li>
-                    <li><a href="./contact.php" class="nav-link px-2 link-body-emphasis">Contact Us</a></li>
-                </ul>
-                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                    <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-                </form>
-                <div class="dropdown text-end">
-                    <a href="../public/" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="./assets/images/logo.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
+    <main>
+        <header class="p-3 border-bottom">
+            <div class="container">
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <a href="../public/home.php" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+
+                        <img src="assets/images/logo.jpg" class="bi me-2" width="40" height="32" style="object-fit:cover">
                     </a>
-                    <ul class="dropdown-menu text-small">
-                        <li><a class="dropdown-item" href="./admin.php">Admin</a></li>
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+
+                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                        <li><a href="./home.php" class="nav-link px-2 link-secondary">Home</a></li>
+                        <li><a href="./blogs.php" class="nav-link px-2 link-body-emphasis">Blog</a></li>
+                        <li><a href="./contact.php" class="nav-link px-2 link-body-emphasis">Contact Us</a></li>
                     </ul>
+
+                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                        <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+                    </form>
+
+                    <div class="dropdown text-end">
+                        <a href="../public/" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="./assets/images/logo.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
+                        </a>
+                        <ul class="dropdown-menu text-small">
+                            <li><a class="dropdown-item" href="./admin.php">Admin</a></li>
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </header>
-    
-    <link href="assets/css/blog.css" rel="stylesheet">
-    <link href="assets/css/blog.rtl.css" rel="stylesheet">
-    <main class="p-2">
-        <h3 class="mx-4 my-4">Featured</h3>
-        <?php
-        $server_name = "localhost";
-        $username = "root";
-        $password = "";
-        $database = "myblog_db";
-        //connection to data base
-        $conn = new mysqli($server_name, $username, $password, $database);
-        if (!$conn) //to chk connection 
-            die("connection error");
-        $sql = "SELECT * FROM `posts` LIMIT 4";
-        $result = mysqli_query($conn, $sql);
-        $total_row = mysqli_num_rows($result);
-        if ($total_row != 0) {
-            echo "<div class='row mb-2'>";
-            while ($single_row = mysqli_fetch_assoc($result)) {
-                echo "<div class='col-md-6'>
-                           <div class='row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative'>
-                                <div class='col p-3 d-flex flex-column position-static'>
-                                    <strong class='d-inline-block mb-2 text-primary-emphasis'>World</strong>
-                                    <h3 class='mb-0'>" . $single_row['title'] . "</h3>
-                                    <div class='mb-1 text-body-secondary'>" . date("jS M Y", strtotime($single_row['date'])) . "</div>
-                                    <p class='card-text mb-auto'>" . substr($single_row['content'], 0, 70) . ".....</p>
-                                    <a href='#' class='icon-link gap-1 icon-link-hover stretched-link'>
-                                        Continue reading
-                                    </a>
-                                </div>
-                                <div class='col-lg-5 col-12 d-none d-lg-block'>
-                                    <img class='bd-placeholder-img w-100' width='200' height='250' style='object-fit:cover ;' src='./assets/images/" . $single_row['image'] . "'>
-                                </div>
-                            </div>
-                        </div>";
-                }}?>
-    </main>
+        </header>
+
+      
+        <link href="assets/css/blog.css" rel="stylesheet">
+        <link href="assets/css/blog.rtl.css" rel="stylesheet">
+
+        <main class="p-2">
+            <h3 class="mx-4 my-4">Featured</h3>
+            <?php
+            $server_name="localhost";
+            $username="root";
+            $password="";
+            $database="myblog_db";
+           
+           //connection to data base
+            $conn=new mysqli($server_name, $username, $password, $database);
+            if(!$conn)//to chk connection 
+               die("connection error");
+
+               $sql="SELECT * FROM `posts` LIMIT 4";
+               $result = mysqli_query($conn,$sql);
+               $total_row = mysqli_num_rows($result);
+
+               if($total_row != 0)
+               {
+                echo "<div class='row mb-2'>";
+                while($single_row = mysqli_fetch_assoc($result))
+                {
+                    echo "
+                 <div class='col-md-6'>
+                    <div class='row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative'>
+                        <div class='col p-3 d-flex flex-column position-static'>
+                            <strong class='d-inline-block mb-2 text-primary-emphasis'>World</strong>
+                            <h3 class='mb-0'>".$single_row['title']."</h3>
+                            <div class='mb-1 text-body-secondary'>".date("jS M Y",strtotime($single_row['date']))."</div>
+                            <p class='card-text mb-auto'>".substr($single_row['content'],0,70).".....</p>
+                            <a href='#' class='icon-link gap-1 icon-link-hover stretched-link'>
+                                Continue reading
+                            </a>
+                        </div>
+                        <div class='col-lg-5 col-12 d-none d-lg-block'>
+                            <img class='bd-placeholder-img w-100' width='200' height='250' style='object-fit:cover ;' src='./assets/images/".$single_row['image']."'>
+                        </div>
+                    </div>
+                </div>
+                    ";
+                }
+               }
+
+        ?>
+        </main>
 
     <div class="container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
