@@ -128,7 +128,7 @@
                             <h3 class='mb-0'>".$single_row['title']."</h3>
                             <div class='mb-1 text-body-secondary'>".date("jS M Y",strtotime($single_row['date']))."</div>
                             <p class='card-text mb-auto'>".substr($single_row['content'],0,70).".....</p>
-                            <a href='#' class='icon-link gap-1 icon-link-hover stretched-link'>
+                            <a href='./blogpage.php?id=" . $single_row['id'] . "' class='icon-link gap-1 icon-link-hover stretched-link'>
                                 Continue reading
                             </a>
                         </div>
