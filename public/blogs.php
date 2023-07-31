@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <title>Home</title>
 
-    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
         .bi {
@@ -26,9 +26,9 @@
             -webkit-overflow-scrolling: touch;
         }
     </style>
-    <link href="assets/css/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="./assets/css/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="assets/css/headers.css" rel="stylesheet">
+    <link href="./assets/css/headers.css" rel="stylesheet">
 </head>
 
 <body>
@@ -52,7 +52,7 @@
                     </form>
 
                     <div class="dropdown text-end">
-                        <a href="../public/" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a href=",/home.php" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="./assets/images/logo.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
                         </a>
                         <ul class="dropdown-menu text-small">
@@ -69,7 +69,6 @@
             </div>
         </header>
 
-      
         <link href="assets/css/blog.css" rel="stylesheet">
         <link href="assets/css/blog.rtl.css" rel="stylesheet">
 
@@ -86,65 +85,96 @@
             if(!$conn)//to chk connection 
                die("connection error");
 
-               $sql="SELECT * FROM `posts` LIMIT 4";
+               $sql="SELECT * FROM `posts` LIMIT 3";
                $result = mysqli_query($conn,$sql);
                $total_row = mysqli_num_rows($result);
 
-               if($total_row != 0)
+               if($total_row > 0)
                {
                 echo "<div class='row mb-2'>";
                 while($single_row = mysqli_fetch_assoc($result))
                 {
-                    echo "
-                 <div class='col-md-6'>
+                    echo "<div class='col-md-6'>
                     <div class='row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative'>
                         <div class='col p-3 d-flex flex-column position-static'>
                             <strong class='d-inline-block mb-2 text-primary-emphasis'>World</strong>
                             <h3 class='mb-0'>".$single_row['title']."</h3>
                             <div class='mb-1 text-body-secondary'>".date("jS M Y",strtotime($single_row['date']))."</div>
                             <p class='card-text mb-auto'>".substr($single_row['content'],0,70).".....</p>
-                            <a href='#' class='icon-link gap-1 icon-link-hover stretched-link'>
+                            <a href='blogpage.php?id=" . $single_row['id'] . "' class='icon-link gap-1 icon-link-hover stretched-link'>
                                 Continue reading
                             </a>
                         </div>
                         <div class='col-lg-5 col-12 d-none d-lg-block'>
-                            <img class='bd-placeholder-img w-100' width='200' height='250' style='object-fit:cover ;' src='./assets/images/".$single_row['image']."'>
+                            <img class='bd-placeholder-img w-100' width='200' height='250' style='object-fit:cover;' src='./assets/images/".$single_row['image']."'>
+                        </div>
+                    </div>
+                </div>";
+                }
+               }?> <!-- <div class="row mb-2">
+                <div class="col-md-6">
+                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                        <div class="col p-4 d-flex flex-column position-static">
+                            <strong class="d-inline-block mb-2 text-primary-emphasis">World</strong>
+                            <h3 class="mb-0">Featured post</h3>
+                            <div class="mb-1 text-body-secondary">Nov 12</div>
+                            <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                            <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
+                                Continue reading
+                            </a>
+                        </div>
+                        <div class="col-lg-5 col-12 d-none d-lg-block">
+                            <img class="bd-placeholder-img w-100" width="200" height="250" style="object-fit:cover;" src="assets\images\logo.jpg">
                         </div>
                     </div>
                 </div>
-                    ";
-                }
-               }
-
-        ?>
+                <div class="col-md-6">
+                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                        <div class="col p-4 d-flex flex-column position-static">
+                            <strong class="d-inline-block mb-2 text-success-emphasis">Design</strong>
+                            <h3 class="mb-0">Post title</h3>
+                            <div class="mb-1 text-body-secondary">Nov 11</div>
+                            <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                            <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
+                                Continue reading
+                            </a>
+                        </div>
+                        <div class="col-lg-5 col-12 d-none d-lg-block">
+                            <img class="bd-placeholder-img w-100" width="200" height="250" style="object-fit:cover;" src="assets\images\logo.jpg">
+                        </div>
+                    </div>
+                </div>
+            </div> -->
         </main>
 
-    <div class="container">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-            <div class="col-md-4 d-flex align-items-center">
-                <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
-                    <svg class="bi" width="30" height="24">
-                        <use xlink:href="#bootstrap" />
-                    </svg>
-                </a>
-                <span class="mb-3 mb-md-0 text-body-secondary">&copy; 2023 Company, Inc</span>
-            </div>
-            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                <li class="ms-3">
-                    <a class="text-body-secondary" href="#">
-                        <i class="bi-twitter"></i>
+        <div class="container">
+            <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                <div class="col-md-4 d-flex align-items-center">
+                    <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+                        <svg class="bi" width="30" height="24">
+                            <use xlink:href="#bootstrap" />
+                        </svg>
                     </a>
-                </li>
-                <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24">
-                            <use xlink:href="#instagram" />
-                        </svg></a></li>
-                <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24">
-                            <use xlink:href="#facebook" />
-                        </svg></a></li>
-            </ul>
-        </footer>
-    </div>
-    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+                    <span class="mb-3 mb-md-0 text-body-secondary">&copy; 2023 Company, Inc</span>
+                </div>
+
+                <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                    <li class="ms-3">
+                        <a class="text-body-secondary" href="#">
+                            <i class="bi-twitter"></i>
+                        </a>
+                    </li>
+                    <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24">
+                                <use xlink:href="#instagram" />
+                            </svg></a></li>
+                    <li class="ms-3"><a class="text-body-secondary" href="#"><svg class="bi" width="24" height="24">
+                                <use xlink:href="#facebook" />
+                            </svg></a></li>
+                </ul>
+            </footer>
+        </div>
+    </main>
+    <script src="./assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
