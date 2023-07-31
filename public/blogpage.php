@@ -52,7 +52,7 @@
                     </form>
 
                     <div class="dropdown text-end">
-                        <a href="../public/" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a href=",/home.php" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="./assets/images/logo.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
                         </a>
                         <ul class="dropdown-menu text-small">
@@ -69,13 +69,12 @@
             </div>
         </header>
 
-      
+        
         <link href="assets/css/blog.css" rel="stylesheet">
         <link href="assets/css/blog.rtl.css" rel="stylesheet">
 
         <main class="p-2">
-            <h3 class="mx-4 my-4">Featured</h3>
-            <?php
+        <?php
             $server_name="localhost";
             $username="root";
             $password="";
@@ -86,37 +85,57 @@
             if(!$conn)//to chk connection 
                die("connection error");
 
-               $sql="SELECT * FROM `posts` LIMIT 4";
-               $result = mysqli_query($conn,$sql);
-               $total_row = mysqli_num_rows($result);
-
-               if($total_row != 0)
-               {
-                echo "<div class='row mb-2'>";
-                while($single_row = mysqli_fetch_assoc($result))
-                {
-                    echo "
-                 <div class='col-md-6'>
-                    <div class='row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative'>
-                        <div class='col p-3 d-flex flex-column position-static'>
-                            <strong class='d-inline-block mb-2 text-primary-emphasis'>World</strong>
-                            <h3 class='mb-0'>".$single_row['title']."</h3>
-                            <div class='mb-1 text-body-secondary'>".date("jS M Y",strtotime($single_row['date']))."</div>
-                            <p class='card-text mb-auto'>".substr($single_row['content'],0,70).".....</p>
-                            <a href='./blogpage.php?id=" . $single_row['id'] . "' class='icon-link gap-1 icon-link-hover stretched-link'>
-                                Continue reading
-                            </a>
-                        </div>
-                        <div class='col-lg-5 col-12 d-none d-lg-block'>
-                            <img class='bd-placeholder-img w-100' width='200' height='250' style='object-fit:cover ;' src='./assets/images/".$single_row['image']."'>
-                        </div>
-                    </div>
-                </div>
-                    ";
+            function getBlogById($conn, $blogId) {
+                $query = "SELECT * FROM posts WHERE id = $blogId";
+                $result = $conn->query($query);
+                return $result->fetch_assoc();
+            }
+            
+            // Function to get related blog suggestions (replace this with your own logic)
+            function getRelatedBlogs($conn, $currentBlogId) {
+                // Replace this query with your criteria for related blogs
+                $query = "SELECT * FROM posts WHERE id != $currentBlogId ORDER BY RAND() LIMIT 5";
+                $result = $conn->query($query);
+                $relatedBlogs = array();
+                while ($row = $result->fetch_assoc()) {
+                    $relatedBlogs[] = $row;
                 }
-               }
+                return $relatedBlogs;
+            }
+            if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+                $blogId = $_GET['id'];
+            
+                // Fetch the main blog content
+                $blog = getBlogById($conn, $blogId);
+            
+                // Fetch related blog suggestions
+                $relatedBlogs = getRelatedBlogs($conn, $blogId);
+            }
+            ?>
+            <div class="main-content">
+                <?php if (isset($blog)) : ?>
+                    <h1><?php echo $blog['title']; ?></h1>
+                    <p><?php echo $blog['content']; ?></p>
+                <?php else : ?>
+                    <p>Blog not found.</p>
+                <?php endif; ?>
+            </div>
 
-        ?>
+
+            <div class="related-blogs">
+                <h2>Related Blogs</h2>
+                <?php if (!empty($relatedBlogs)) : ?>
+                    <ul>
+                        <?php foreach ($relatedBlogs as $relatedBlog) : ?>
+                            <li>
+                            <a href="blogpage.php?id=<?php echo $relatedBlog['id']; ?>"><?php echo $relatedBlog['title']; ?></a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php else : ?>
+                    <p>No related blogs found.</p>
+                <?php endif; ?>
+            </div>
         </main>
 
         <div class="container">
