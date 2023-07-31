@@ -52,7 +52,7 @@
                     </form>
 
                     <div class="dropdown text-end">
-                        <a href=",/home.php" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a href="../public/" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="./assets/images/logo.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
                         </a>
                         <ul class="dropdown-menu text-small">
@@ -69,32 +69,7 @@
             </div>
         </header>
 
-        <!--slider-->
-        <link rel="stylesheet" href="assets/slider/ism/css/my-slider.css" />
-        <script src="assets/slider/ism/js/ism-2.2.min.js"></script>
-
-
-        <div class="ism-slider" data-transition_type="fade" data-play_type="loop" id="my-slider">
-            <ol>
-                <li>
-                    <img src="./assets/images/zedi_banner.jpg" height="320px">
-                    <div class="ism-caption ism-caption-0">Gaming tournaments</div>
-                </li>
-                <li>
-                    <img src="./assets/images/pubg_banner_1-1.jpg">
-                    <div class="ism-caption ism-caption-0">BGMI</div>
-                </li>
-                <li>
-                    <img src="./assets/images/valorant_banner.jpg">
-                    <div class="ism-caption ism-caption-0">VALORANT</div>
-                </li>
-                <li>
-                    <img src="./assets/images/freefire.jpeg">
-                    <div class="ism-caption ism-caption-0">FREEFIRE</div>
-                </li>
-            </ol>
-        </div>
-        <!--end slider-->
+      
         <link href="assets/css/blog.css" rel="stylesheet">
         <link href="assets/css/blog.rtl.css" rel="stylesheet">
 
@@ -142,40 +117,6 @@
                }
 
         ?>
-            <!-- <div class="row mb-2">
-                <div class="col-md-6">
-                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                        <div class="col p-4 d-flex flex-column position-static">
-                            <strong class="d-inline-block mb-2 text-primary-emphasis">World</strong>
-                            <h3 class="mb-0">Featured post</h3>
-                            <div class="mb-1 text-body-secondary">Nov 12</div>
-                            <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                            <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
-                                Continue reading
-                            </a>
-                        </div>
-                        <div class="col-lg-5 col-12 d-none d-lg-block">
-                            <img class="bd-placeholder-img w-100" width="200" height="250" style="object-fit:cover;" src="assets\images\logo.jpg">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                        <div class="col p-4 d-flex flex-column position-static">
-                            <strong class="d-inline-block mb-2 text-success-emphasis">Design</strong>
-                            <h3 class="mb-0">Post title</h3>
-                            <div class="mb-1 text-body-secondary">Nov 11</div>
-                            <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                            <a href="#" class="icon-link gap-1 icon-link-hover stretched-link">
-                                Continue reading
-                            </a>
-                        </div>
-                        <div class="col-lg-5 col-12 d-none d-lg-block">
-                            <img class="bd-placeholder-img w-100" width="200" height="250" style="object-fit:cover;" src="assets\images\logo.jpg">
-                        </div>
-                    </div>
-                </div>
-            </div> -->
         </main>
 
         <div class="container">
