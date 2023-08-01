@@ -202,9 +202,6 @@
             background-color: #adf7ad;
         }
 
-        .arch_contact_us_duplicate .icon-block.social-icon {
-      
-        }
 
         @media (max-width: 1024px) {
         .arch_contact_us_duplicate .text-blk.section-head {
@@ -549,7 +546,7 @@
             </p>
             </div>
             <div class="responsive-cell-block wk-ipadp-6 wk-mobile-12 wk-desk-5 wk-tab-9" id="i6df">   
-            <form onsubmit="sendEmail(); reset(); return false;">    
+            <form  action="mailto: palaktayal99884@gmail.com" enctype="multipart/form-data">    
             <div class="form-wrapper">
                 
                 <input type="text" class="input input-element" name="Name" placeholder="Name">
@@ -605,23 +602,5 @@
         </div>
         </div> 
         <script src="https://smtpjs.com/v3/smtp.js"></script>
-        <script>
-            function sendEmail(){
-                Email.send({
-                    Host : "smtp.gmail.com",
-                    Username : "",
-                    Password : "",
-                    To : '',
-                    From : document.getElementById("email").value,
-                    Subject : "New Contact Form Enquiry",
-                    Body : "Name" +document.getElementById("name").value
-                    + "<br>Email: "+document.getElementById("email").value
-                    +"<br> Contact Number.: "+ document.getElementById("Contact Number").value
-                    +"<br>Message: "+document.getElementById("message").value
-                }).then(
-                message => alert("message sent successfully")
-                );
-
-            }
 </body>
 </html>
