@@ -215,10 +215,18 @@ function old_checked($key)
     <?php if(!empty($errors['username'])):?>
       <div class="text-danger"><?=$errors['username']?></div>
     <?php endif;?>
+    <div class="form-floating">
+      <select  value="<?=old_value('gender')?>" name="gender" type="text" class="form-control mb-2" id="floatingInput" placeholder="gender">
+        <option value="male">male</option>
+        <option value="female">female</option>
+        <option value="others">others</option>
+      </select>
+      <label for="floatingInput">gender</label>  
+    </div>
 
     <div class="form-floating">
       <input value="<?=old_value('password')?>" name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
-      <label for="floatingPassword">Password</label>
+      <label for="floatingPassword">password</label>
     </div>
     <?php if(!empty($errors['password'])):?>
       <div class="text-danger"><?=$errors['password']?></div>
