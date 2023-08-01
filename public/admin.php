@@ -211,14 +211,34 @@
                 </div>
             </main>
             <?php
+                $server_name="localhost";
+                $username="root";
+                $password="";
+                $database="myblog_db";
                
+               //connection to data base
+                $conn=new mysqli($server_name, $username, $password, $database);
+                if(!$conn)//to chk connection 
+                   die("connection error");
+
+                $sql = "SELECT * FROM users";
+                $result = mysqli_query($conn,$sql);
+                $total_user = mysqli_num_rows($result);
+
+                $sql1 = "SELECT * FROM posts";
+                $result1 = mysqli_query($conn,$sql1);
+                $total_post = mysqli_num_rows($result);
+
+                
+
+    
             ?>
             <div class="container-fluid col-lg-10 col-md-8" >
                 <div class="row col-lg-10 col-md-12" style="float:right">
                    <div class="col-lg-3 col-md-6 col-sm-8 card text-bg-info mb-2 mx-3" style="max-width: 18rem;">
                        <div class="card-body">
                          <h5 class="card-title">Total User</h5>
-                         <p class="card-text">12</p>
+                         <p class="card-text"><?php echo $total_user?></p>
                        </div>
                     </div>
                    <div class="col-lg-3 col-md-6 col-sm-8  card text-bg-success mb-2 mx-3" style="max-width: 18rem;">
@@ -230,7 +250,7 @@
                    <div class="col-lg-3 col-md-6 col-sm-8  card text-bg-warning mb-2 mx-3" style="max-width: 18rem;">
                        <div class="card-body">
                          <h5 class="card-title">Total Posts</h5>
-                         <p class="card-text"></p>
+                         <p class="card-text"><?php echo $total_post?></p>
                        </div>
                     </div>
                 </div>
@@ -248,42 +268,42 @@
                     function drawVisualization() {
                       var data = google.visualization.arrayToDataTable([
                             ['State Code', 'State', 'Users'],     
-                              [ 'IN-UP','Uttar Pradesh', 33],
-                        ['IN-MH','Maharashtra', 32],
-                        ['IN-BR','Bihar', 31],
-                        ['IN-WB','West Bengal', 32],
-                        ['IN-MP','Madhya Pradesh', 30],
-                        ['IN-TN','Tamil Nadu', 33],
-                        ['IN-RJ','Rajasthan', 33],
-                        ['IN-KA','Karnataka', 29],
-                        ['IN-GJ','Gujarat', 34],
-                        ['IN-AP','Andhra Pradesh', 32],
-                        ['IN-OR','Orissa', 33],
-                        ['IN-TG','Telangana', 33],
-                        ['IN-KL','Kerala', 31],
-                        ['IN-JH','Jharkhand', 29],
-                        ['IN-AS','Assam', 28],
-                        ['IN-PB','Punjab', 30],
-                        ['IN-CT','Chhattisgarh', 33],
-                        ['IN-HR','Haryana', 30],
-                        ['IN-JK','Jammu and Kashmir', 20],
-                        ['IN-UT','Uttarakhand', 28],
-                        ['IN-HP','Himachal Pradesh', 17],
-                        ['IN-TR','Tripura', 31],
-                        ['IN-ML','Meghalaya', 21],
-                        ['IN-MN','Manipur', 22],
-                        ['IN-NL','Nagaland', 22],
-                        ['IN-GA','Goa', 32],
-                        ['IN-AR', 'Arunachal Pradesh', 33],
-                        ['IN-MZ','Mizoram', 23],
-                        ['IN-SK','Sikkim', 24],
-                        ['IN-DL','Delhi', 31],
-                        ['IN-PY','Puducherry', 33],
-                        ['IN-CH','Chandigarh', 30],
-                        ['IN-AN','Andaman and Nicobar Islands', 30],
-                        ['IN-DN','Dadra and Nagar Haveli', 30],
-                        ['IN-DD','Daman and Diu', 29],
-                        ['IN-LD','Lakshadweep', 31]
+                              [ 'IN-UP','Uttar Pradesh', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Uttar Pradesh'")); ?>],
+                        ['IN-MH','Maharashtra', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Maharashtra'")); ?>],
+                        ['IN-BR','Bihar', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Bihar'")); ?>],
+                        ['IN-WB','West Bengal', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='West Bengal'")); ?>],
+                        ['IN-MP','Madhya Pradesh', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Madhya Pradesh'")); ?>],
+                        ['IN-TN','Tamil Nadu', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Tamil Nadu'")); ?>],
+                        ['IN-RJ','Rajasthan', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Rajasthan'")); ?>],
+                        ['IN-KA','Karnataka', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Karnataka'")); ?>],
+                        ['IN-GJ','Gujarat', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Gujarat'")); ?>],
+                        ['IN-AP','Andhra Pradesh', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Andhra Pradesh'")); ?>],
+                        ['IN-OR','Orissa', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Orissa'")); ?>],
+                        ['IN-TG','Telangana', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Telangana'")); ?>],
+                        ['IN-KL','Kerala', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Kerala'")); ?>],
+                        ['IN-JH','Jharkhand', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Jharkhand'")); ?>],
+                        ['IN-AS','Assam', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Assam'")); ?>],
+                        ['IN-PB','Punjab', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Punjab'")); ?>],
+                        ['IN-CT','Chhattisgarh', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Chhattisgarh'")); ?>],
+                        ['IN-HR','Haryana', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Haryana'")); ?>],
+                        ['IN-JK','Jammu and Kashmir', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Jammu and Kashmir'")); ?>],
+                        ['IN-UT','Uttarakhand', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='uttarakhand'")); ?>],
+                        ['IN-HP','Himachal Pradesh', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Himachal Pradesh'")); ?>],
+                        ['IN-TR','Tripura', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Tripura'")); ?>],
+                        ['IN-ML','Meghalaya', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Meghalaya'")); ?>],
+                        ['IN-MN','Manipur', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Manipur'")); ?>],
+                        ['IN-NL','Nagaland', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Nagaland'")); ?>],
+                        ['IN-GA','Goa', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Goa'")); ?>],
+                        ['IN-AR', 'Arunachal Pradesh', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Arunachal Pradesh'")); ?>],
+                        ['IN-MZ','Mizoram', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Mizoram'")); ?>],
+                        ['IN-SK','Sikkim', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Sikkim'")); ?>],
+                        ['IN-DL','Delhi', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Delhi'")); ?>],
+                        ['IN-PY','Puducherry', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Puducherry'")); ?>],
+                        ['IN-CH','Chandigarh', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Chandigarh'")); ?>],
+                        ['IN-AN','Andaman and Nicobar Islands', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Andaman and Nicobar Islands'")); ?>],
+                        ['IN-DN','Dadra and Nagar Haveli', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Dadra and Nagar Haveli'")); ?>],
+                        ['IN-DD','Daman and Diu', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Daman and Diu'")); ?>],
+                        ['IN-LD','Lakshadweep', <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `state` ='Lakshadweep'")); ?>]
                       ]);
             
                         var opts = {
@@ -308,7 +328,7 @@
                 
                 <script>
                     var xValues = ["male", "female", "others" ];
-                    var yValues = [55, 49, 44];
+                    var yValues = [ <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `gender` ='male'")); ?>, <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `gender` ='female'")); ?>, <?php echo  mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `users` WHERE `gender` ='others'")); ?>];
                     var barColors = [
                       "#b91d47",
                       "#2b5797",
