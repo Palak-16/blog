@@ -14,11 +14,12 @@
     $sql="SELECT * FROM `users` WHERE (email='$email' AND password='$pass')";
     var_dump($sql);
     $res= mysqli_query($conn,$sql);
-  
+  session_start();
      
     if(mysqli_num_rows($res) > 0){  
       echo "row found";
       $row=mysqli_fetch_assoc($res);
+      $_SESSION['name']=$row['username'];
       if($row["role"]=='admin')
        {
          header("location: admin.php");

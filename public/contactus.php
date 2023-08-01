@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
     <style>
-
+ 
         .arch_contact_us_duplicate * {
         font-family: Nunito, sans-serif;
         }
@@ -174,7 +174,7 @@
         border-image-repeat: initial;
         margin-top: 0px;
         margin-right: 0px;
-        margin-bottom: 60px;
+        margin-bottom: 6%;
         margin-left: 0px;
         background-color: #03DF04;
         }
@@ -182,10 +182,10 @@
         .arch_contact_us_duplicate .form-wrapper {
         border-bottom-width: 4px;
         border-bottom-style: solid;
-        border-bottom-color: #f3f2cf;
+        border-bottom-color: #adf7ad;
         margin-top: 0px;
         margin-right: 0px;
-        margin-bottom: 60px;
+        margin-bottom: 6%;
         margin-left: 0px;
         }
 
@@ -198,9 +198,12 @@
         .arch_contact_us_duplicate .input-element {
         background-color: #adf7ad;
         }
+        body{
+            background-color: #adf7ad;
+        }
 
         .arch_contact_us_duplicate .icon-block.social-icon {
-        fill: ;
+      
         }
 
         @media (max-width: 1024px) {
@@ -536,14 +539,14 @@
 <body>
         <div class="arch_contact_us_duplicate">
         <div class="responsive-container-block big-container">
-            <div class="responsive-container-block container">
-            <div class="responsive-cell-block wk-mobile-12 wk-desk-5 wk-tab-10 wk-ipadp-5" id="ih6s">
+            <div class="responsive-container-block container" style="padding-top:6%" >
+            <div class="responsive-cell-block wk-mobile-12 wk-desk-5 wk-tab-10 wk-ipadp-5" style="height: 20%; margin-top: 5%;" id="ih6s">
                 <p class="text-blk section-head">
-                Get in touch dolor sit
+                About Us :
                 </p>
                 <p class="text-blk section-subhead">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                </p>
+               Zedi Esports Organization Founded on 22 september, 2021 with vision to generate opportunities for underdogs to attain maximum exposure to reach a mass audience Consistency, discipline and transperency are important principal for Zedi Esports . It consists of visionary and committed guys who have enough potential to organising online eventsy
+            </p>
             </div>
             <div class="responsive-cell-block wk-ipadp-6 wk-mobile-12 wk-desk-5 wk-tab-9" id="i6df">
                 <div class="form-wrapper">
@@ -555,7 +558,7 @@
                     Send
                 </button>
                 </div>
-                <div class="social-media-icon-container">
+                <div class="social-media-icon-container" style>
                 <div class="icon-block social-icon">
                     <svg height="37.7" id="ihxs6" viewBox="0 0 37.701 37.7" width="37.701" xmlns="http://www.w3.org/2000/svg">
                     <path d="M32.178,0H5.523A5.529,5.529,0,0,0,0,5.522V32.178A5.529,5.529,0,0,0,5.523,37.7H16.641V24.372H12.223V17.746h4.418V13.254a6.634,6.634,0,0,1,6.627-6.627h6.7v6.627h-6.7v4.492h6.7l-1.1,6.627h-5.6V37.7h8.91A5.529,5.529,0,0,0,37.7,32.178V5.522A5.529,5.529,0,0,0,32.178,0Zm0,0">

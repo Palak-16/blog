@@ -30,7 +30,13 @@
     <!-- Custom styles for this template -->
     <link href="assets/css/headers.css" rel="stylesheet">
 </head>
-
+<?php
+session_start();
+if(isset($_SESSION['name']))
+  $user = $_SESSION['name'];
+else 
+   $user = "user";  
+?>
 <body>
     <main>
         <header class="p-3 border-bottom">
@@ -56,13 +62,12 @@
                             <img src="./assets/images/logo.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
                         </a>
                         <ul class="dropdown-menu text-small">
+                            <li><a class="dropdown-item" href="#"><?php echo $user ?></a></li>
                             <li><a class="dropdown-item" href="./admin.php">Admin</a></li>
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li><a class="dropdown-item" href="#">Settings</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="">Sign out</a></li>
+                            <li><a class="dropdown-item" href="./logout.php">Sign out</a></li>
                         </ul>
                     </div>
                 </div>
