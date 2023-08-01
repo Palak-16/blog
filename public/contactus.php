@@ -545,16 +545,20 @@
                Zedi Esports Organization Founded on 22 september, 2021 with vision to generate opportunities for underdogs to attain maximum exposure to reach a mass audience Consistency, discipline and transperency are important principal for Zedi Esports . It consists of visionary and committed guys who have enough potential to organising online eventsy
             </p>
             </div>
-            <div class="responsive-cell-block wk-ipadp-6 wk-mobile-12 wk-desk-5 wk-tab-9" id="i6df">
-                <div class="form-wrapper">
-                <input class="input input-element" name="Name" placeholder="Name">
-                <input class="input input-element" name="Contact Number" placeholder="Contact Number">
-                <input class="input input-element" name="Email" placeholder="Email">
-                <textarea class="textinput input-element" placeholder="Message"></textarea>
-                <button class="button">
+            <div class="responsive-cell-block wk-ipadp-6 wk-mobile-12 wk-desk-5 wk-tab-9" id="i6df">   
+            <form onsubmit="sendEmail(); reset(); return false;">    
+            <div class="form-wrapper">
+                
+                <input type="text" class="input input-element" name="Name" placeholder="Name">
+                <input type="text" class="input input-element" name="Contact Number" placeholder="Contact Number">
+                <input type="text" class="input input-element" name="Email" placeholder="Email">
+                <textarea  name="message" class="textinput input-element" placeholder="Message"></textarea>
+                <button type="submit" class="button">
                     Send
                 </button>
+                
                 </div>
+                </form>
                 <div class="social-media-icon-container" style>
                 <div class="icon-block social-icon">
                     <svg height="37.7" id="ihxs6" viewBox="0 0 37.701 37.7" width="37.701" xmlns="http://www.w3.org/2000/svg">
@@ -589,5 +593,24 @@
             </div>
         </div>
         </div> 
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+        <script>
+            function sendEmail(){
+                Email.send({
+                    Host : "smtp.gmail.com",
+                    Username : "",
+                    Password : "",
+                    To : '',
+                    From : document.getElementById("email").value,
+                    Subject : "New Contact Form Enquiry",
+                    Body : "Name" +document.getElementById("name").value
+                    + "<br>Email: "+document.getElementById("email").value
+                    +"<br> Contact Number.: "+ document.getElementById("Contact Number").value
+                    +"<br>Message: "+document.getElementById("message").value
+                }).then(
+                message => alert("message sent successfully")
+                );
+
+            }
 </body>
 </html>
