@@ -95,6 +95,7 @@
      <!-- Custom styles for this template -->
 <link href="assets/css/dashboard.css" rel="stylesheet">
     <link href="assets/css/dashboard.rtl.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 </head>
 
 <body>
@@ -209,96 +210,132 @@
                     </div>
                 </div>
             </main>
-        <div class="container-fluid col-lg-10 col-md-8" style="margin-left: 25%;">
-            <div class="row col-lg-10 col-md-8">
-               <div class="col-lg-3 col-md-6 col-sm-8 card text-bg-info mb-2 mx-3" style="max-width: 18rem;">
-                   <div class="card-body">
-                     <h5 class="card-title">Total User</h5>
-                     <p class="card-text">12</p>
-                   </div>
-                </div>
-               <div class="col-lg-3 col-md-6 col-sm-8  card text-bg-success mb-2 mx-3" style="max-width: 18rem;">
-                   <div class="card-body">
-                     <h5 class="card-title">Active User</h5>
-                     <p class="card-text">12</p>
-                   </div>
-                </div>
-               <div class="col-lg-3 col-md-6 col-sm-8  card text-bg-warning mb-2 mx-3" style="max-width: 18rem;">
-                   <div class="card-body">
-                     <h5 class="card-title">Total Posts</h5>
-                     <p class="card-text"></p>
-                   </div>
+            <?php
+               
+            ?>
+            <div class="container-fluid col-lg-10 col-md-8" >
+                <div class="row col-lg-10 col-md-12" style="float:right">
+                   <div class="col-lg-3 col-md-6 col-sm-8 card text-bg-info mb-2 mx-3" style="max-width: 18rem;">
+                       <div class="card-body">
+                         <h5 class="card-title">Total User</h5>
+                         <p class="card-text">12</p>
+                       </div>
+                    </div>
+                   <div class="col-lg-3 col-md-6 col-sm-8  card text-bg-success mb-2 mx-3" style="max-width: 18rem;">
+                       <div class="card-body">
+                         <h5 class="card-title">Active User</h5>
+                         <p class="card-text">12</p>
+                       </div>
+                    </div>
+                   <div class="col-lg-3 col-md-6 col-sm-8  card text-bg-warning mb-2 mx-3" style="max-width: 18rem;">
+                       <div class="card-body">
+                         <h5 class="card-title">Total Posts</h5>
+                         <p class="card-text"></p>
+                       </div>
+                    </div>
                 </div>
             </div>
-        </div>   
-        <div class="container-fluid col-lg-10 col-md-8" style="margin-left: 25%;"> 
-        <script type='text/javascript' src='https://www.google.com/jsapi'></script>
-           <div>
-             <div id="visualization">   </div>
-           </div>
+            <div class="container-fluid col-12" >   
+            <div class="row col-lg-10 col-md-12 col-sm-12" style="float:right;">
+            <div class="container-fluid col-lg-7 col-md-12 col-sm-12" style="float:left;"> 
+                <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+                <div>
+                    <div id="visualization">   </div>
+                </div>
+                <script>
+                    google.load('visualization', '1', {'packages': ['geochart']});
+                    google.setOnLoadCallback(drawVisualization);
+                    function drawVisualization() {
+                      var data = google.visualization.arrayToDataTable([
+                            ['State Code', 'State', 'Users'],     
+                              [ 'IN-UP','Uttar Pradesh', 33],
+                        ['IN-MH','Maharashtra', 32],
+                        ['IN-BR','Bihar', 31],
+                        ['IN-WB','West Bengal', 32],
+                        ['IN-MP','Madhya Pradesh', 30],
+                        ['IN-TN','Tamil Nadu', 33],
+                        ['IN-RJ','Rajasthan', 33],
+                        ['IN-KA','Karnataka', 29],
+                        ['IN-GJ','Gujarat', 34],
+                        ['IN-AP','Andhra Pradesh', 32],
+                        ['IN-OR','Orissa', 33],
+                        ['IN-TG','Telangana', 33],
+                        ['IN-KL','Kerala', 31],
+                        ['IN-JH','Jharkhand', 29],
+                        ['IN-AS','Assam', 28],
+                        ['IN-PB','Punjab', 30],
+                        ['IN-CT','Chhattisgarh', 33],
+                        ['IN-HR','Haryana', 30],
+                        ['IN-JK','Jammu and Kashmir', 20],
+                        ['IN-UT','Uttarakhand', 28],
+                        ['IN-HP','Himachal Pradesh', 17],
+                        ['IN-TR','Tripura', 31],
+                        ['IN-ML','Meghalaya', 21],
+                        ['IN-MN','Manipur', 22],
+                        ['IN-NL','Nagaland', 22],
+                        ['IN-GA','Goa', 32],
+                        ['IN-AR', 'Arunachal Pradesh', 33],
+                        ['IN-MZ','Mizoram', 23],
+                        ['IN-SK','Sikkim', 24],
+                        ['IN-DL','Delhi', 31],
+                        ['IN-PY','Puducherry', 33],
+                        ['IN-CH','Chandigarh', 30],
+                        ['IN-AN','Andaman and Nicobar Islands', 30],
+                        ['IN-DN','Dadra and Nagar Haveli', 30],
+                        ['IN-DD','Daman and Diu', 29],
+                        ['IN-LD','Lakshadweep', 31]
+                      ]);
+            
+                        var opts = {
+                          region: 'IN',
+                          domain:'IN',
+                          displayMode: 'regions',
+                          resolution: 'provinces',
+                          /*backgroundColor: '#81d4fa',*/
+                          /*datalessRegionColor: '#81d4fa',*/
+                          width: 540, 
+                          height: 480
+                        };
+                        var geochart = new google.visualization.GeoChart(
+                            document.getElementById('visualization'));
+                        geochart.draw(data, opts);
+                    };
+                </script>   
+            </div>
+            <div class="container-fluid col-lg-5 col-md-12 col-sm-12 " style="float:right; margin-top:10%;" >
+                <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script> -->
+                <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+                
+                <script>
+                    var xValues = ["male", "female", "others" ];
+                    var yValues = [55, 49, 44];
+                    var barColors = [
+                      "#b91d47",
+                      "#2b5797",
+                      "#1e7145"
+                    ];
+                    
+                    new Chart("myChart", {
+                      type: "pie",
+                      data: {
+                        labels: xValues,
+                        datasets: [{
+                          backgroundColor: barColors,
+                          data: yValues
+                        }]
+                      },
+                      options: {
+                        title: {
+                          display: true,
+                          text: "Genders"
+                        }
+                      }
+                    });
+                </script>
+            </div>
+            </div>
+            </div>
         </div>
-        <script>
-            google.load('visualization', '1', {'packages': ['geochart']});
-google.setOnLoadCallback(drawVisualization);
-
-function drawVisualization() {
-  var data = google.visualization.arrayToDataTable([
-        ['State Code', 'State', 'Users'],     
-          [ 'IN-UP','Uttar Pradesh', 33],
-    ['IN-MH','Maharashtra', 32],
-    ['IN-BR','Bihar', 31],
-    ['IN-WB','West Bengal', 32],
-    ['IN-MP','Madhya Pradesh', 30],
-    ['IN-TN','Tamil Nadu', 33],
-    ['IN-RJ','Rajasthan', 33],
-    ['IN-KA','Karnataka', 29],
-    ['IN-GJ','Gujarat', 34],
-    ['IN-AP','Andhra Pradesh', 32],
-    ['IN-OR','Orissa', 33],
-    ['IN-TG','Telangana', 33],
-    ['IN-KL','Kerala', 31],
-    ['IN-JH','Jharkhand', 29],
-    ['IN-AS','Assam', 28],
-    ['IN-PB','Punjab', 30],
-    ['IN-CT','Chhattisgarh', 33],
-    ['IN-HR','Haryana', 30],
-    ['IN-JK','Jammu and Kashmir', 20],
-    ['IN-UT','Uttarakhand', 28],
-    ['IN-HP','Himachal Pradesh', 17],
-    ['IN-TR','Tripura', 31],
-    ['IN-ML','Meghalaya', 21],
-    ['IN-MN','Manipur', 22],
-    ['IN-NL','Nagaland', 22],
-    ['IN-GA','Goa', 32],
-    ['IN-AR', 'Arunachal Pradesh', 33],
-    ['IN-MZ','Mizoram', 23],
-    ['IN-SK','Sikkim', 24],
-    ['IN-DL','Delhi', 31],
-    ['IN-PY','Puducherry', 33],
-    ['IN-CH','Chandigarh', 30],
-    ['IN-AN','Andaman and Nicobar Islands', 30],
-    ['IN-DN','Dadra and Nagar Haveli', 30],
-    ['IN-DD','Daman and Diu', 29],
-    ['IN-LD','Lakshadweep', 31]
-  ]);
-
-      var opts = {
-        region: 'IN',
-        domain:'IN',
-        displayMode: 'regions',
-        resolution: 'provinces',
-        /*backgroundColor: '#81d4fa',*/
-        /*datalessRegionColor: '#81d4fa',*/
-        width: 540, 
-        height: 480
-      };
-      var geochart = new google.visualization.GeoChart(
-          document.getElementById('visualization'));
-      geochart.draw(data, opts);
-    };
-
-        </script>
-     </div>
     </div>
     
     <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
