@@ -202,9 +202,6 @@
             background-color: #adf7ad;
         }
 
-        .arch_contact_us_duplicate .icon-block.social-icon {
-      
-        }
 
         @media (max-width: 1024px) {
         .arch_contact_us_duplicate .text-blk.section-head {
