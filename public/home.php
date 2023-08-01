@@ -64,6 +64,8 @@ else
                         <ul class="dropdown-menu text-small">
                             <li><a class="dropdown-item" href="#"><?php echo $user ?></a></li>
                             <li><a class="dropdown-item" href="./admin.php">Admin</a></li>
+                            <li><a class="dropdown-item" href="./login.php">login</a></li>
+                            <li><a class="dropdown-item" href="../../blog/apps/pages/signup.php">Signup</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
