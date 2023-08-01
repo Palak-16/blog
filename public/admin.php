@@ -228,9 +228,6 @@
                 $sql1 = "SELECT * FROM posts";
                 $result1 = mysqli_query($conn,$sql1);
                 $total_post = mysqli_num_rows($result);
-
-                
-
     
             ?>
             <div class="container-fluid col-lg-10 col-md-8" >
