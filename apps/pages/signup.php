@@ -177,10 +177,10 @@
       </symbol>
     </svg>
     
-<main class="form-signin w-100 m-auto">
+<main class="form-signin w-100 mx-auto my-1">
   <form method="post">
-    <img class="mb-4" src="../../public/assets/images/logo.jpg" alt="" width="72" height="57">
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+    <img class="mb-2" src="../../public/assets/images/logo.jpg" alt="" width="72" height="57">
+    <h1 class="h3 mb-2 fw-normal">Please sign in</h1>
     
     <!-- <?php if (!empty($errors)): ?>
       <div class="alert alert-danger">Please fix the error below</div>
@@ -274,7 +274,7 @@ function old_checked($key)
       <a href="../../public/login.php">Login here</a>
      </div>
 
-    <div class="form-check text-start my-3">
+    <div class="form-check text-start my-2">
       <input <?=old_checked('terms')?> name="terms" class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
       <label class="form-check-label" for="flexCheckDefault">
         Accept terms and conditions

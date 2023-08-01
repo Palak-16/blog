@@ -44,7 +44,7 @@
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                         <li><a href="./home.php" class="nav-link px-2 link-secondary">Home</a></li>
                         <li><a href="./blogs.php" class="nav-link px-2 link-body-emphasis">Blog</a></li>
-                        <li><a href="./contact.php" class="nav-link px-2 link-body-emphasis">Contact Us</a></li>
+                        <li><a href="./contactus.php" class="nav-link px-2 link-body-emphasis">Contact Us</a></li>
                     </ul>
 
                     <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
@@ -62,7 +62,7 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                            <li><a class="dropdown-item" href="">Sign out</a></li>
                         </ul>
                     </div>
                 </div>
