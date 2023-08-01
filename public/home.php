@@ -111,7 +111,7 @@
             if(!$conn)//to chk connection 
                die("connection error");
 
-               $sql="SELECT * FROM `posts` WHERE 1";
+               $sql="SELECT * FROM `posts` LIMIT 5";
                $result = mysqli_query($conn,$sql);
                $total_row = mysqli_num_rows($result);
 
@@ -128,7 +128,11 @@
                             <h3 class='mb-0'>".$single_row['title']."</h3>
                             <div class='mb-1 text-body-secondary'>".date("jS M Y",strtotime($single_row['date']))."</div>
                             <p class='card-text mb-auto'>".substr($single_row['content'],0,70).".....</p>
+<<<<<<< HEAD
                             <a href='./blogpage.php?id=" . $single_row['id'] . "' class='icon-link gap-1 icon-link-hover stretched-link'>
+=======
+                            <a href='blogpage.php?id=" . $single_row['id'] . "' class='icon-link gap-1 icon-link-hover stretched-link'>
+>>>>>>> 8cfe808876ff4e5d8ec5727a46a4ac15b4833b25
                                 Continue reading
                             </a>
                         </div>

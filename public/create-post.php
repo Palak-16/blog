@@ -175,6 +175,8 @@ function old_value($key)
     if (empty($errors)) {
       $title = $_POST['title'];
       $content = $_POST['content'];
+      var_dump($content);
+      $content =  mysqli_real_escape_string($conn, $content);
       $image = $_POST['image'];
       if (isset($_FILES["image"]["name"])) {
        $file_name = $_FILES["image"]["name"];
@@ -183,6 +185,7 @@ function old_value($key)
         if (move_uploaded_file($tmp_name, $file_store)) {
           $sql = "INSERT INTO `posts` (`title`,`content`,`image`) VALUES ('$title','$content','$file_name')";
           $result = mysqli_query($conn, $sql);
+          //var_dump($sql);
           if ($result) {
             echo "submitted";
            

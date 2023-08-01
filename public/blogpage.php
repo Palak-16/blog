@@ -75,67 +75,53 @@
 
         <main class="p-2">
         <?php
-            $server_name="localhost";
-            $username="root";
-            $password="";
-            $database="myblog_db";
-           
-           //connection to data base
-            $conn=new mysqli($server_name, $username, $password, $database);
-            if(!$conn)//to chk connection 
-               die("connection error");
+        $server_name = "localhost";
+        $username = "root";
+        $password = "";
+        $database = "myblog_db";
 
-            function getBlogById($conn, $blogId) {
-                $query = "SELECT * FROM posts WHERE id = $blogId";
-                $result = $conn->query($query);
-                return $result->fetch_assoc();
-            }
-            
-            // Function to get related blog suggestions (replace this with your own logic)
-            function getRelatedBlogs($conn, $currentBlogId) {
-                // Replace this query with your criteria for related blogs
-                $query = "SELECT * FROM posts WHERE id != $currentBlogId ORDER BY RAND() LIMIT 5";
-                $result = $conn->query($query);
-                $relatedBlogs = array();
-                while ($row = $result->fetch_assoc()) {
-                    $relatedBlogs[] = $row;
-                }
-                return $relatedBlogs;
-            }
-            if (isset($_GET['id']) && is_numeric($_GET['id'])) {
-                $blogId = $_GET['id'];
-            
-                // Fetch the main blog content
-                $blog = getBlogById($conn, $blogId);
-            
-                // Fetch related blog suggestions
-                $relatedBlogs = getRelatedBlogs($conn, $blogId);
-            }
+        //connection to data base
+        $conn = new mysqli($server_name, $username, $password, $database);
+        if (!$conn) //to chk connection 
+            die("connection error");
+
+        if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+            $blogId = $_GET['id'];
+            $sql = "SELECT * FROM posts WHERE id='$blogId'";
+            $result = mysqli_query($conn,$sql);
+            $total_row = mysqli_num_rows($result);
+            if($total_row != 0)
+                $row = mysqli_fetch_assoc($result);
+            else
+               echo "row not found";    
+        }else
+           echo "id not found";?>
+
+        <div class="container"></div>
+         <div class="row m-2 px-2 ">
+            <div class="main-content col-lg-9 col-sm-12 col-md-12">
+               <img class="mb-2" width="100%" height="20%" src="./assets/images/<?php echo $row["image"]?>">
+                <h1><?php echo $row["title"]?></h1>
+                <p><?php echo $row["content"]?></p>
+            </div>
+            <?php
+              $sql = "SELECT * FROM posts";
+              $result = mysqli_query($conn,$sql);
+              $total_row = mysqli_num_rows($result);
             ?>
-            <div class="main-content">
-                <?php if (isset($blog)) : ?>
-                    <h1><?php echo $blog['title']; ?></h1>
-                    <p><?php echo $blog['content']; ?></p>
-                <?php else : ?>
-                    <p>Blog not found.</p>
-                <?php endif; ?>
+            <div class="related-blogs col-lg-3 col-sm-12 col-md-12">
+               <h3>Related blogs :</h3> 
+               <?php
+                if($total_row != 0)
+                 {
+                    while($row = mysqli_fetch_assoc($result))
+                    {
+                        echo "<a class='icon-link gap-1 icon-link-hover stretched-link' href='blogpage.php?id=".$row['id']."'>" .$row['title']. "</a><br><br>";
+                    }
+                 } 
+               ?>
             </div>
-
-
-            <div class="related-blogs">
-                <h2>Related Blogs</h2>
-                <?php if (!empty($relatedBlogs)) : ?>
-                    <ul>
-                        <?php foreach ($relatedBlogs as $relatedBlog) : ?>
-                            <li>
-                            <a href="blogpage.php?id=<?php echo $relatedBlog['id']; ?>"><?php echo $relatedBlog['title']; ?></a>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
-                <?php else : ?>
-                    <p>No related blogs found.</p>
-                <?php endif; ?>
-            </div>
+         </div>
         </main>
 
         <div class="container">
