@@ -155,7 +155,7 @@
                             <use xlink:href="#bootstrap" />
                         </svg>
                     </a>
-                    <span class="mb-3 mb-md-0 text-body-secondary">&copy; 2023 Company, Inc</span>
+                    <span class="mb-3 mb-md-0 text-body-secondary">&copy; zediesportspvtltd, 2023 Company, Inc</span>
                 </div>
 
                 <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
