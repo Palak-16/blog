@@ -219,12 +219,12 @@ $id = $_GET['id'];
                 <div class="row col-lg-10 col-md-12" style="float:right">
                    <div class="col-lg-3 col-md-6 col-sm-8 card text-bg-info mb-2 mx-3" style="max-width: 18rem;">
                        <div class="card-body">
-                         <h5 class="card-title"><a href="./categories.php">NO</a></h5>
+                         <h5 class="card-title"><a href="./posts.php">NO</a></h5>
                        </div>
                     </div>
                    <div class="col-lg-3 col-md-6 col-sm-8  card text-bg-success mb-2 mx-3" style="max-width: 18rem;">
                        <div class="card-body">
-                         <h5 class="card-title"><a href="del.php?id=<?php echo $_GET['id']?>">YES</a></h5>
+                         <h5 class="card-title"><a href="del_post.php?id=<?php echo $_GET['id']?>">YES</a></h5>
    
                        </div>
                     </div>

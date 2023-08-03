@@ -10,9 +10,9 @@
 
 
 $id = $_GET['id'];
-echo "$id";
+echo $id;
 $sql="DELETE FROM users WHERE id=$id";
 $result=mysqli_query($conn,$sql);
 if($result)
-   header("Location: admin.php");
+   header("Location: users.php");
 ?>

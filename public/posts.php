@@ -281,7 +281,7 @@
                                               <td>" . "<img class='myimg' src='./assets/images/".$single_row['image']."' >" . "</td>
                                               <td>" . $single_row['date'] . "</td>
                                               <td>
-                                                 <button class='btn btn-danger text-white btn-sm'><a href='delete_user.php?id=" . $single_row['id'] . "'><i class='bi bi-trash-fill'></i></button>
+                                                 <button class='btn btn-danger text-white btn-sm'><a href='delete_posts.php?id=" . $single_row['id'] . "'><i class='bi bi-trash-fill'></i></button>
                                               </td>
                                            </tr>
                                            ";
