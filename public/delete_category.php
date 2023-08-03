@@ -7,8 +7,11 @@
  $conn = new mysqli($server_name, $username, $password, $database);
  if (!$conn) 
      die("connection error");
+?>
 
 
+
+<?php
 $id = $_GET['id'];
 echo "$id";
 $sql="DELETE FROM categories WHERE id=$id";
