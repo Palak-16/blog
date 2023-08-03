@@ -73,7 +73,7 @@
         <link href="assets/css/blog.rtl.css" rel="stylesheet">
 
         <main class="p-2">
-            <h3 class="mx-4 my-4">Featured</h3>
+            <h3 class="mx-4 my-4">IGC</h3>
             <?php
             $server_name="localhost";
             $username="root";
@@ -85,7 +85,7 @@
             if(!$conn)//to chk connection 
                die("connection error");
 
-               $sql="SELECT * FROM `posts` LIMIT 4";
+               $sql="SELECT * FROM `posts` WHERE `category`='igc' LIMIT 4";
                $result = mysqli_query($conn,$sql);
                $total_row = mysqli_num_rows($result);
 
@@ -111,7 +111,43 @@
                     </div>
                 </div>";
                 }
-               }?> <!-- <div class="row mb-2">
+               }?> 
+            <h3 class="mx-4 my-4">WGC</h3>
+            <?php
+               $sql1="SELECT * FROM `posts` WHERE `category`='wgc' LIMIT 4";
+               $result1 = mysqli_query($conn,$sql1);
+               $total_row1 = mysqli_num_rows($result1);
+
+               if($total_row1 > 0)
+               {
+                echo "<div class='row mb-2'>";
+                while($row = mysqli_fetch_assoc($result1))
+                {
+                    echo "<div class='col-md-6'>
+                    <div class='row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative'>
+                        <div class='col p-3 d-flex flex-column position-static'>
+                            <strong class='d-inline-block mb-2 text-primary-emphasis'>World</strong>
+                            <h3 class='mb-0'>".$row['title']."</h3>
+                            <div class='mb-1 text-body-secondary'>".date("jS M Y",strtotime($row['date']))."</div>
+                            <p class='card-text mb-auto'>".substr($row['content'],0,70).".....</p>
+                            <a href='blogpage.php?id=" . $row['id'] . "' class='icon-link gap-1 icon-link-hover stretched-link'>
+                                Continue reading
+                            </a>
+                        </div>
+                        <div class='col-lg-5 col-12 d-none d-lg-block'>
+                            <img class='bd-placeholder-img w-100' width='200' height='250' style='object-fit:cover;' src='./assets/images/".$single_row['image']."'>
+                        </div>
+                    </div>
+                </div>";
+                }
+               }
+               else{
+                echo "<p>no posts yet</p>";
+               }
+               ?> 
+               
+               
+               <!-- <div class="row mb-2">
                 <div class="col-md-6">
                     <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                         <div class="col p-4 d-flex flex-column position-static">
