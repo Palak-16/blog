@@ -135,6 +135,17 @@ function old_value($key)
       <div class="text-danger"><?= $errors['title'] ?></div>
     <?php endif; ?>
 
+    <div class="form-floating">
+      <select value="<?= old_value('category') ?>" name="category" type="text" class="form-control" id="floatingInput" >
+      <option value="igc">IGC</option>
+      <option value="wgc">WGC</option>
+    </select>
+      <label for="floatingInput">Category</label>
+    </div>
+    <?php if (!empty($errors['category'])): ?>
+      <div class="text-danger"><?= $errors['category'] ?></div>
+    <?php endif; ?>
+
     <div class="">
       <textarea id="summernote" value="<?= old_value('content') ?>" name="content" class="form-control mb-2" id="floatingInput" placeholder="content"></textarea>
      
@@ -166,6 +177,10 @@ function old_value($key)
       $errors['title'] = "A title is required";
     }
 
+    if (empty($_POST['category'])) {
+      $errors['category'] = "A category is required";
+    }
+
     if (empty($_POST['content'])) {
       $errors['content'] = "content is required";
     } else if (strLen($_POST['content']) < 10) {
@@ -174,6 +189,7 @@ function old_value($key)
 
     if (empty($errors)) {
       $title = $_POST['title'];
+      $category= $_POST['category'];
       $content = $_POST['content'];
       var_dump($content);
       $content =  mysqli_real_escape_string($conn, $content);
@@ -183,7 +199,7 @@ function old_value($key)
         $tmp_name = $_FILES["image"]["tmp_name"];
         $file_store = "./assets/images/" . $file_name;
         if (move_uploaded_file($tmp_name, $file_store)) {
-          $sql = "INSERT INTO `posts` (`title`,`content`,`image`) VALUES ('$title','$content','$file_name')";
+          $sql = "INSERT INTO `posts` (`title`,'category',`content`,`image`) VALUES ('$title','$category','$content','$file_name')";
           $result = mysqli_query($conn, $sql);
           //var_dump($sql);
           if ($result) {
