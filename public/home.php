@@ -41,23 +41,18 @@ else
     <main>
         <header class="p-3 border-bottom">
             <div class="container">
-                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                    <a href="../public/home.php" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+                <div class="d-flex flex-wrap align-items-right justify-content-right justify-content-lg-start">
+                    
 
-                        <img src="assets/images/logo.jpg" class="bi me-2" width="40" height="32" style="object-fit:cover">
-                    </a>
+                    <ul class="nav col-10 me-lg-auto mb-2 justify-content-left mb-md-0">
+                        <li><a href="../public/home.php" class="d-flex mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
 
-                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+<img src="assets/images/logo.jpg" class="mt-2 me-5 bi me-2" width="40" height="32" style="object-fit:cover">
+</a></li>
                         <li><a href="./home.php" class="nav-link px-2 link-secondary">Home</a></li>
                         <li><a href="./blogs.php" class="nav-link px-2 link-body-emphasis">Blog</a></li>
                         <li><a href="./contactus.php" class="nav-link px-2 link-body-emphasis">Contact Us</a></li>
-                    </ul>
-
-                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                        <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-                    </form>
-
-                    <div class="dropdown text-end">
+                        <!-- <li><div class="dropdown text-end mt-2">
                         <a href=",/home.php" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="./assets/images/logo.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
                         </a>
@@ -65,7 +60,23 @@ else
                             <li><a class="dropdown-item" href="#"><?php echo $user ?></a></li>
                             <li><a class="dropdown-item" href="./admin.php">Admin</a></li>
                             <li><a class="dropdown-item" href="./login.php">login</a></li>
-                            <li><a class="dropdown-item" href="../../blog/apps/pages/signup.php">Signup</a></li>
+                            <li><a class="dropdown-item" href="../../blog/apps/pa">Signup</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="./logout.php">Sign out</a></li>
+                        </ul>
+                    </div></li> -->
+                    </ul>
+                    <div class="mt-2 ml-4 col-2 me-lg-auto dropdown text-end justify-content-rightmb-md-0 ">
+                        <a href=",/home.php" class="link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="./assets/images/logo.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
+                        </a>
+                        <ul class="dropdown-menu text-small">
+                            <li><a class="dropdown-item" href="#"><?php echo $user ?></a></li>
+                            <li><a class="dropdown-item" href="./admin.php">Admin</a></li>
+                            <li><a class="dropdown-item" href="./login.php">login</a></li>
+                            <li><a class="dropdown-item" href="../../blog/apps/pa">Signup</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>

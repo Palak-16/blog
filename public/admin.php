@@ -85,6 +85,18 @@
         .bd-mode-toggle {
             z-index: 1500;
         }
+        @media screen and (max-width: 400px) {
+           .myrow {
+            float: right;
+             overflow: hidden;
+             width: 130%;
+           }
+        }
+        @media screen and (min-width: 400px) {
+           .myrow {
+             float: right;
+           }
+}
        
     </style>
     <!-- Bootstrap Font Icon CSS -->
@@ -253,8 +265,8 @@
                 </div>
             </div>
             <div class="container-fluid col-12" >   
-            <div class="row col-lg-10 col-md-12 col-sm-12" style="float:right;">
-            <div class="container-fluid col-lg-7 col-md-12 col-sm-12" style="float:left;"> 
+            <div class="myrow row col-lg-10 col-md-12 col-sm-12">
+            <div class="container-fluid col-lg-7 col-md-12 col-sm-12" style="float:left; "> 
                 <script type='text/javascript' src='https://www.google.com/jsapi'></script>
                 <div>
                     <div id="visualization">   </div>
@@ -311,7 +323,8 @@
                           /*backgroundColor: '#81d4fa',*/
                           /*datalessRegionColor: '#81d4fa',*/
                           width: 540, 
-                          height: 480
+                          height: 480,
+                          
                         };
                         var geochart = new google.visualization.GeoChart(
                             document.getElementById('visualization'));

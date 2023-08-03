@@ -25,44 +25,72 @@
             white-space: nowrap;
             -webkit-overflow-scrolling: touch;
         }
+        @media screen and (max-width: 400px) {
+           .myimg {
+             height: 8%;
+            }
+         }
+        @media screen and (min-width: 401px) {
+           .myimg {
+             height: 12%;
+            }
+         }
     </style>
     <link href="assets/css/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="assets/css/headers.css" rel="stylesheet">
 </head>
-
+<?php
+session_start();
+if(isset($_SESSION['name']))
+  $user = $_SESSION['name'];
+else 
+   $user = "user";  
+?>
 <body>
     <main>
         <header class="p-3 border-bottom">
             <div class="container">
-                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                    <a href="../public/home.php" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+                <div class="d-flex flex-wrap align-items-right justify-content-right justify-content-lg-start">
+                    
 
-                        <img src="assets/images/logo.jpg" class="bi me-2" width="40" height="32" style="object-fit:cover">
-                    </a>
+                    <ul class="nav col-10 me-lg-auto mb-2 justify-content-left mb-md-0">
+                        <li><a href="../public/home.php" class="d-flex mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
 
-                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                           <img src="assets/images/logo.jpg" class="mt-2 me-5 bi me-2" width="40" height="32" style="object-fit:cover">
+                           </a></li>
                         <li><a href="./home.php" class="nav-link px-2 link-secondary">Home</a></li>
                         <li><a href="./blogs.php" class="nav-link px-2 link-body-emphasis">Blog</a></li>
-                        <li><a href="./contact.php" class="nav-link px-2 link-body-emphasis">Contact Us</a></li>
-                    </ul>
-
-                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                        <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-                    </form>
-
-                    <div class="dropdown text-end">
+                        <li><a href="./contactus.php" class="nav-link px-2 link-body-emphasis">Contact Us</a></li>
+                        <!-- <li><div class="dropdown text-end mt-2">
                         <a href=",/home.php" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="./assets/images/logo.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
                         </a>
                         <ul class="dropdown-menu text-small">
+                            <li><a class="dropdown-item" href="#"><?php echo $user ?></a></li>
                             <li><a class="dropdown-item" href="./admin.php">Admin</a></li>
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><a class="dropdown-item" href="./login.php">login</a></li>
+                            <li><a class="dropdown-item" href="../../blog/apps/pa">Signup</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Sign out</a></li>
+                            <li><a class="dropdown-item" href="./logout.php">Sign out</a></li>
+                        </ul>
+                    </div></li> -->
+                    </ul>
+                    <div class="mt-2 ml-4 col-2 me-lg-auto dropdown text-end justify-content-rightmb-md-0 ">
+                        <a class="link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="./assets/images/logo.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
+                        </a>
+                        <ul class="dropdown-menu text-small">
+                            <li><a class="dropdown-item" href="#"><?php echo $user ?></a></li>
+                            <li><a class="dropdown-item" href="./admin.php">Admin</a></li>
+                            <li><a class="dropdown-item" href="./login.php">login</a></li>
+                            <li><a class="dropdown-item" href="../../blog/apps/pa">Signup</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="./logout.php">Sign out</a></li>
                         </ul>
                     </div>
                 </div>
@@ -88,37 +116,39 @@
         if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             $blogId = $_GET['id'];
             $sql = "SELECT * FROM posts WHERE id='$blogId'";
-            $result = mysqli_query($conn,$sql);
+            $result = mysqli_query($conn, $sql);
             $total_row = mysqli_num_rows($result);
-            if($total_row != 0)
+            if ($total_row != 0)
                 $row = mysqli_fetch_assoc($result);
             else
-               echo "row not found";    
-        }else
-           echo "id not found";?>
+                echo "row not found";
+        } else
+            echo "id not found";
 
-        <div class="container"></div>
+         $sql1 = "SELECT * FROM posts";
+         $result1 = mysqli_query($conn, $sql1);
+         $total_row1 = mysqli_num_rows($result1);    
+            
+        ?>
+
+        <div class="container-fluid"></div>
          <div class="row m-2 px-2 ">
             <div class="main-content col-lg-9 col-sm-12 col-md-12">
-               <img class="mb-2" width="100%" height="20%" src="./assets/images/<?php echo $row["image"]?>">
-                <h1><?php echo $row["title"]?></h1>
-                <p><?php echo $row["content"]?></p>
+               <img class="mb-2 mying" width="100%" src="./assets/images/<?php echo $row["image"] ?>">
+                <h1><?php echo $row["title"] ?></h1>
+                <p><?php echo $row["content"] ?></p>
             </div>
-            <?php
-              $sql = "SELECT * FROM posts";
-              $result = mysqli_query($conn,$sql);
-              $total_row = mysqli_num_rows($result);
-            ?>
             <div class="related-blogs col-lg-3 col-sm-12 col-md-12">
+                <h3>Creat Your Qwn Blog :</h3>
+                <button class="btn btn-sm btn-outline-secondary d-flex align-items-center gap-1" type="submit" name='submit'><a href="./create-post.php">Create new Post</a> </button>
+                <br>
                <h3>Related blogs :</h3> 
                <?php
-                if($total_row != 0)
-                 {
-                    while($row = mysqli_fetch_assoc($result))
-                    {
-                        echo "<a class='icon-link gap-1 icon-link-hover stretched-link' href='blogpage.php?id=".$row['id']."'>" .$row['title']. "</a><br><br>";
-                    }
-                 } 
+               if ($total_row1 != 0) {
+                   while ($row = mysqli_fetch_assoc($result1)) {
+                       echo "<a class='' href='blogpage.php?id=".$row['id']."'>".$row['title']."</a>";
+                   }
+               }
                ?>
             </div>
          </div>
